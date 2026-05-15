@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Foundation — Case Studies</title>
+<link rel="stylesheet" href="../../colors_and_type.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" />
+<link rel="stylesheet" href="kit.css" />
+<style>
+  html, body { background: var(--site-bg); color: var(--site-fg); }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="Icons.jsx"></script>
+<script type="text/babel" src="Navbar.jsx"></script>
+<script type="text/babel" src="CaseStudyComponents.jsx"></script>
+<script type="text/babel" src="Footer.jsx"></script>
+
+<script type="text/babel">
+const {
+  FoundationNavbar: Navbar,
+  FoundationPageHero: PageHero,
+  FoundationCaseStudyRow: CaseStudyRow,
+  FoundationFooter: Footer,
+  FoundationIcons,
+} = window;
+
+const cases = [
+  {
+    title: 'How Foundation Helped a SaaS Company Generate 1,000,000+ Net-New Impressions in Search Results in 12 Months',
+    body: 'This SaaS company engaged Foundation to take over the heavy lifting of maintaining and growing the established SEO traction they had built, to allow their internal team to remain focused on building out an entirely new category of content.',
+    image: '../../assets/illustrations/g-6t.svg',
+    ctaLabel: 'Read Our Case Study On This SaaS Company',
+    flip: false,
+  },
+  {
+    title: 'How Foundation Helped a SaaS Company Increase Sign Ups by 128%',
+    body: 'This up-and-coming SaaS company partnered with Foundation to identify their ideal users and develop a Go-to-Market (GTM) strategy when they were less than three weeks away from a soft launch.',
+    image: '../../assets/illustrations/g-8t.svg',
+    ctaLabel: 'Read Our Case Study On This SaaS Company',
+    flip: true,
+  },
+  {
+    title: 'How We Helped an Audience Intelligence Platform Reach 300%+ Increases in Social Engagement in Just 3 Months',
+    body: 'An audience intelligence SaaS company engaged Foundation to leverage content creation, distribution, and repurposing to attract more leads and improve SEO in 2021 and beyond. They ultimately wanted to increase market visibility and be positioned as the leader in their industry.',
+    image: '../../assets/illustrations/g-7t.svg',
+    ctaLabel: 'Read Our Case Study On This Audience Intelligence Platform',
+    flip: false,
+  },
+];
+
+function App() {
+  return (
+    <>
+      <Navbar />
+
+      <PageHero
+        title="Case Studies"
+        lede="We work with ambitious B2B brands from around the world to achieve results that count."
+        ctaLabel="Learn How We Can Help"
+        ctaIcon="ThumbsUp"
+      />
+
+      {cases.map((c, i) => <CaseStudyRow key={i} {...c} />)}
+
+      <Footer />
+
+      <button className="fdn-back-to-top" onClick={() => window.scrollTo({top:0, behavior:'smooth'})} aria-label="Back to top">
+        <FoundationIcons.ArrowUp size={20} />
+      </button>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+</body>
+</html>

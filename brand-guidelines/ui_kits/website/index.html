@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Foundation — Digital Marketing Agency for B2B Brands</title>
+<link rel="stylesheet" href="../../colors_and_type.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" />
+<link rel="stylesheet" href="kit.css" />
+<style>
+  html, body { background: var(--site-bg); color: var(--site-fg); }
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="Icons.jsx"></script>
+<script type="text/babel" src="Navbar.jsx"></script>
+<script type="text/babel" src="TrustBadges.jsx"></script>
+<script type="text/babel" src="Hero.jsx"></script>
+<script type="text/babel" src="ProcessSteps.jsx"></script>
+<script type="text/babel" src="SectionBlock.jsx"></script>
+<script type="text/babel" src="ServiceCard.jsx"></script>
+<script type="text/babel" src="LogoStrip.jsx"></script>
+<script type="text/babel" src="StatBlock.jsx"></script>
+<script type="text/babel" src="CTAPanel.jsx"></script>
+<script type="text/babel" src="Footer.jsx"></script>
+
+<script type="text/babel">
+const {
+  FoundationNavbar: Navbar,
+  FoundationHero: Hero,
+  FoundationProcessSteps: ProcessSteps,
+  FoundationSectionBlock: SectionBlock,
+  FoundationLogoStrip: LogoStrip,
+  FoundationStatBlock: StatBlock,
+  FoundationCTAPanel: CTAPanel,
+  FoundationFooter: Footer,
+  FoundationIcons,
+} = window;
+
+function App() {
+  return (
+    <>
+      <Navbar />
+      <Hero variant="centered" />
+
+      <ProcessSteps />
+
+      {/* Below: a single demo annotation in the production-site "handwritten arrow" style */}
+      <div style={{textAlign: 'center', paddingBottom: 64, background: 'var(--site-bg)'}}>
+        <div className="fdn-annotation">Most 'content marketing agencies' just do this ↑</div>
+      </div>
+
+      <section className="fdn-section fdn-section--surface">
+        <div className="fdn-container">
+          <LogoStrip />
+        </div>
+      </section>
+
+      <SectionBlock
+        wide
+        eyebrow="The Numbers"
+        title="Outcomes we measure for."
+        lede="What changes when content actually compounds — across two-year client engagements."
+      >
+        <div className="fdn-stat-grid">
+          <StatBlock value="3.2" suffix="×" label="Organic Reach"  caption="Median lift across content-led B2B engagements within 6 months." />
+          <StatBlock value="58" suffix="%"  label="Pipeline From Content" caption="Of inbound deals attributed to long-form editorial." />
+          <StatBlock value="120" suffix="+" label="Brands Shaped" caption="Founders, marketers and product teams we've partnered with since 2014." />
+        </div>
+      </SectionBlock>
+
+      <Hero variant="split" />
+
+      <section className="fdn-section fdn-section--navy">
+        <div className="fdn-container fdn-section__grid">
+          <div className="fdn-section__label">
+            <div className="fdn-eyebrow">How We Work</div>
+            <h2 className="fdn-section__title">Three motions, woven together.</h2>
+            <p className="fdn-section__lede">Strategy hands off to creation; creation hands off to distribution; distribution feeds back into strategy. It's a loop, not a funnel.</p>
+          </div>
+          <div className="fdn-section__spacer" aria-hidden></div>
+          <div className="fdn-section__content">
+            <div className="fdn-spot-grid">
+              <article className="fdn-spot">
+                <div className="fdn-spot__art"><img src="../../assets/Marketing Strategy.svg" alt="" /></div>
+                <h3 className="fdn-spot__title">Marketing Strategy</h3>
+                <p className="fdn-spot__body">Where we start. Topical authority, audience signal, and a 12-month editorial line.</p>
+              </article>
+              <article className="fdn-spot">
+                <div className="fdn-spot__art"><img src="../../assets/Content Creation.svg" alt="" /></div>
+                <h3 className="fdn-spot__title">Content Creation</h3>
+                <p className="fdn-spot__body">Long-form, video, design — produced by editors who know your category.</p>
+              </article>
+              <article className="fdn-spot">
+                <div className="fdn-spot__art"><img src="../../assets/Campaign Promotion.svg" alt="" /></div>
+                <h3 className="fdn-spot__title">Campaign Promotion</h3>
+                <p className="fdn-spot__body">Paid, earned, and partner-led distribution that gets content in front of buyers.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <CTAPanel />
+      <Footer />
+
+      <button className="fdn-back-to-top" onClick={() => window.scrollTo({top:0, behavior:'smooth'})} aria-label="Back to top">
+        <FoundationIcons.ArrowUp size={20} />
+      </button>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+</body>
+</html>

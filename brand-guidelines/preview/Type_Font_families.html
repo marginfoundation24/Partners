@@ -1,0 +1,35 @@
+
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:transparent;}
+  body{padding:24px;color:var(--fg-1);}
+  .card{background:var(--primary-700);border-radius:14px;padding:24px;}
+  .card.light{background:var(--neutral-50);color:var(--primary-800);}
+  .row{display:flex;gap:12px;align-items:center;}
+  .col{display:flex;flex-direction:column;gap:12px;}
+  .grow{flex:1;}
+  .mono{font-family:var(--font-mono);font-size:12px;letter-spacing:-0.01em;}
+  .label{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--neutral-300);}
+  .swatch{border-radius:10px;display:flex;flex-direction:column;justify-content:flex-end;padding:10px 12px;color:#fff;}
+  .pad{padding:24px;}
+  .grid{display:grid;gap:8px;}
+</style></head><body><div class="card">
+  <div class="row" style="gap:18px;align-items:stretch;">
+    <div class="col grow" style="background:rgba(255,255,255,0.04);padding:16px;border-radius:10px;">
+      <div class="label">Primary · web</div>
+      <div style="font:600 28px var(--font-primary);">Aa Bb 123</div>
+      <div class="mono" style="color:var(--neutral-300);">Avenir → IBM Plex Sans</div>
+    </div>
+    <div class="col grow" style="background:rgba(255,255,255,0.04);padding:16px;border-radius:10px;">
+      <div class="label">Display · marketing</div>
+      <div style="font:400 36px var(--font-marketing);">Aa Bb 123</div>
+      <div class="mono" style="color:var(--neutral-300);">Fjalla One</div>
+    </div>
+    <div class="col grow" style="background:rgba(255,255,255,0.04);padding:16px;border-radius:10px;">
+      <div class="label">Body · decks</div>
+      <div style="font:500 28px var(--font-body-deck);">Aa Bb 123</div>
+      <div class="mono" style="color:var(--neutral-300);">Barlow</div>
+    </div>
+  </div>
+</div></body></html>

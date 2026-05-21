@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Eli Schwartz knows SEO that compounds. Foundation knows content that ranks. Together, we build organic engines for B2B brands. At scale.">
+<meta property="og:title" content="Two Firms. One Search Playbook.">
+<meta property="og:description" content="Eli Schwartz knows SEO that compounds. Foundation knows content that ranks. Together, we build organic engines for B2B brands. At scale.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://partners.foundationinc.co/eli-schwartz/">
+<meta name="partner:name" content="Eli Schwartz">
+<meta name="partner:slug" content="eli-schwartz">
+<meta name="partner:published" content="2026-05-15T22:30:00Z">
+<title>Eli Schwartz × Foundation — Two Firms. One Search Playbook.</title>
+
+<link rel="stylesheet" href="/assets/css/foundation-tokens.css">
+<link rel="stylesheet" href="/assets/css/foundation-kit.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap">
+
+<style>
+  html, body { background: var(--site-bg); color: var(--site-fg); margin: 0; padding: 0; }
+  body { font: var(--t-paragraph-03); -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+
+  /* Navbar sized to match foundationinc.co's live header exactly */
+  .fdn-navbar__inner {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    gap: 28px;
+  }
+  .fdn-navbar__brand img {
+    width: 160px;
+    height: auto;
+    display: block;
+  }
+  .fdn-navbar__links { gap: 28px; }
+  .fdn-navbar__link {
+    font-size: 15px;
+    white-space: nowrap;
+  }
+  .fdn-navbar__actions { gap: 16px; }
+  .fdn-navbar__actions .fdn-btn--coral {
+    padding: 17px 26px;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+  }
+  .fdn-navbar__search {
+    min-width: 300px;
+    padding: 14px 18px 14px 16px;
+  }
+  .fdn-navbar__search input { font-size: 14px; }
+  @media (max-width: 1280px) {
+    .fdn-navbar__search { min-width: 240px; }
+  }
+  @media (max-width: 1100px) {
+    .fdn-navbar__search { min-width: 200px; }
+  }
+
+  /* Hero — partner variant: lighter gray bg matching foundationinc.co's #1f232b,
+     split layout (copy left, hero graphic right). Mobile collapses to single column. */
+  .fdn-hero--partner {
+    background: #1f232b;
+    padding: clamp(32px, 4vw, 56px) 0 clamp(72px, 10vw, 110px);
+  }
+  .fdn-hero--partner .fdn-hero__split-grid {
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: center;
+  }
+  .fdn-hero--partner .fdn-eyebrow {
+    display: inline-block;
+    margin-bottom: 24px;
+  }
+  .fdn-hero--partner .fdn-hero__headline {
+    font: 800 clamp(36px, 4.2vw, 56px)/110% var(--font-primary);
+    letter-spacing: -0.015em;
+    max-width: 14ch;
+    margin: 0;
+  }
+  .fdn-hero--partner .fdn-hero__lede {
+    font: 400 18px/150% var(--font-primary);
+    margin: 22px 0 32px;
+    max-width: 540px;
+  }
+  .fdn-hero--partner .fdn-btn--coral {
+    align-self: flex-start;
+  }
+  .fdn-hero--partner .fdn-hero__copy {
+    align-items: flex-start;
+    gap: 0;
+    max-width: 580px;
+  }
+
+  /* Trust badges row (matches foundationinc.co's .home-hero__badges) */
+  .fdn-hero__trust-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    gap: 8px 0;
+  }
+  .fdn-hero__trust-row img {
+    max-width: 80px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin-right: 20px;
+  }
+  .fdn-hero__trust-row img:last-child { margin-right: 0; }
+  @media (max-width: 720px) {
+    .fdn-hero__trust-row img { max-width: 64px; margin-right: 14px; }
+  }
+  .fdn-hero--partner .fdn-hero__art {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .fdn-hero--partner .fdn-hero__art img {
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    display: block;
+  }
+
+  /* Partner byline — circular photo + name, pill-shaped */
+  .fdn-hero__byline {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 22px 6px 6px;
+    margin: 0 0 28px;
+    background: rgba(255, 234, 225, 0.04);
+    border: 1px solid var(--border-soft);
+    border-radius: 999px;
+  }
+  .fdn-hero__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+  }
+  .fdn-hero__byline-name {
+    font: 500 14px/1 var(--font-primary);
+    color: var(--site-fg);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .fdn-hero__byline-label {
+    font: 500 11px/1 var(--font-primary);
+    color: var(--site-fg-meta);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+
+  /* Body copy block (for the partnership section) */
+  .partner-body { font: var(--t-paragraph-03); color: var(--site-fg-dim); }
+  .partner-body p { margin: 0 0 1.5rem; }
+  .partner-body p:last-child { margin-bottom: 0; }
+  .partner-body strong { color: var(--site-fg); font-weight: 600; }
+  .partner-body a { color: var(--site-fg); border-bottom: 1px solid var(--site-line); }
+  .partner-body a:hover { color: var(--secondary-500); border-bottom-color: var(--secondary-500); }
+
+  /* Annotation row (legacy outer) — process annotation now lives inline below the Create card */
+  .fdn-annotation-row { text-align: center; padding-bottom: 64px; background: var(--site-bg); }
+
+  /* Services section headline with brushstroke underlines */
+  .fdn-process__title {
+    font: 700 clamp(24px, 3vw, 44px)/120% var(--font-primary);
+    letter-spacing: -0.015em;
+    color: var(--site-fg);
+    text-align: center;
+    margin: 0 auto clamp(48px, 6vw, 72px);
+  }
+  .red-line,
+  .blue-line {
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
+  }
+  .red-line::after,
+  .blue-line::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.18em;
+    height: 0.32em;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .red-line::after  { background-image: url('/assets/decor/red-underline.svg'); }
+  .blue-line::after { background-image: url('/assets/decor/blue-underline.svg'); }
+
+  /* Annotation positioned below the Create card (column 2 of 4) */
+  .fdn-process__annotation-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 12px;
+    margin-top: 28px;
+  }
+  .fdn-process__annotation-row .fdn-annotation {
+    grid-column: 2;
+    justify-self: center;
+    text-align: center;
+  }
+  @media (max-width: 900px) {
+    .fdn-process__annotation-row { grid-template-columns: 1fr 1fr; }
+    .fdn-process__annotation-row .fdn-annotation { grid-column: 1 / -1; }
+  }
+
+  /* Social proof section — lighter slate than the hero for clear section break */
+  .fdn-social-proof {
+    background: #2a2f38;
+    padding: clamp(56px, 8vw, 110px) 0 clamp(64px, 8vw, 110px);
+  }
+  .fdn-social-proof__headline {
+    font: 700 clamp(30px, 3.8vw, 52px)/125% var(--font-primary);
+    letter-spacing: -0.01em;
+    color: var(--site-fg-dim);
+    text-align: center;
+    max-width: 1100px;
+    margin: 0 auto clamp(56px, 7vw, 88px);
+  }
+  .fdn-social-proof__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: clamp(24px, 3vw, 48px);
+    row-gap: clamp(40px, 5vw, 64px);
+    align-items: center;
+    justify-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .fdn-social-proof__grid img {
+    max-height: 44px;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    opacity: 0.78;
+    display: block;
+  }
+  @media (max-width: 920px) {
+    .fdn-social-proof__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .fdn-social-proof__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- =========== NAVBAR (matches foundationinc.co 1:1) =========== -->
+<header class="fdn-navbar">
+  <div class="fdn-navbar__inner">
+    <a class="fdn-navbar__brand" href="https://foundationinc.co/" aria-label="Foundation">
+      <img src="/assets/logos/foundation-site-logo.svg" alt="Foundation">
+    </a>
+    <nav class="fdn-navbar__links">
+      <a class="fdn-navbar__link" href="https://foundationinc.co/industries/">
+        Industries
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </a>
+      <a class="fdn-navbar__link" href="https://foundationinc.co/services/">
+        Services
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </a>
+      <a class="fdn-navbar__link" href="https://foundationinc.co/blog/">
+        Key Insights
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </a>
+      <a class="fdn-navbar__link" href="https://foundationinc.co/about/">
+        Company
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </a>
+    </nav>
+    <div class="fdn-navbar__actions">
+      <a class="fdn-btn fdn-btn--coral" href="https://foundationinc.co/contact">Book a Call</a>
+      <form class="fdn-navbar__search" action="https://foundationinc.co/" method="get" role="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.34-4.34"/></svg>
+        <input type="search" name="s" placeholder="What are you looking for?" aria-label="Search foundationinc.co">
+      </form>
+    </div>
+  </div>
+</header>
+
+<!-- =========== HERO (split: copy left, hero graphic right) =========== -->
+<section class="fdn-hero fdn-hero--partner">
+  <div class="fdn-container fdn-hero__split-grid">
+    <div class="fdn-hero__copy">
+      <div class="fdn-eyebrow">Foundation × Eli Schwartz</div>
+      <h1 class="fdn-hero__headline">Two Firms. One Search Playbook.</h1>
+      <p class="fdn-hero__lede">Eli Schwartz knows SEO that compounds. Foundation knows content that ranks. Together, we build organic engines for B2B brands. At scale.</p>
+
+      <div class="fdn-hero__byline">
+        
+        <img class="fdn-hero__avatar" src="/assets/eli-schwartz/photo.jpeg" alt="Eli Schwartz">
+        
+        <div style="text-align: left;">
+          <div class="fdn-hero__byline-label">Featured Partner</div>
+          <div class="fdn-hero__byline-name">Eli Schwartz</div>
+        </div>
+      </div>
+
+      <a class="fdn-btn fdn-btn--coral fdn-btn--lg" href="https://foundationinc.co/contact">Book a Discovery Call</a>
+
+      <div class="fdn-hero__trust-row" aria-label="Trust badges">
+        <img src="/assets/badges/01-linkedin-yellow.png" alt="LinkedIn Fundamentals Certified">
+        <img src="/assets/badges/02-moz-company.png" alt="MOZ Recommended Company">
+        <img src="/assets/badges/03-semrush.svg" alt="SEMRUSH Certified Agency Partner">
+        <img src="/assets/badges/04-linkedin-green.png" alt="LinkedIn Marketing Strategy Certified">
+        <img src="/assets/badges/05-reddit.png" alt="Reddit Agency Partner">
+        <img src="/assets/badges/06-clutch-100.svg" alt="Clutch 100 Fastest Growth 2026">
+      </div>
+    </div>
+    <div class="fdn-hero__art">
+      <img src="/assets/illustrations/hero-graphic.svg" alt="" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<!-- =========== SOCIAL PROOF (right under hero) =========== -->
+<section class="fdn-social-proof">
+  <div class="fdn-container">
+    <h2 class="fdn-social-proof__headline">We've helped some of the most ambitious companies drive real ROI from marketing engines.</h2>
+    <div class="fdn-social-proof__grid">
+      <img src="/assets/clients/webex.svg" alt="Webex">
+      <img src="/assets/clients/mailchimp.svg" alt="Mailchimp">
+      <img src="/assets/clients/snowflake.svg" alt="Snowflake">
+      <img src="/assets/clients/canva.svg" alt="Canva">
+      <img src="/assets/clients/procore.svg" alt="Procore">
+      <img src="/assets/clients/stat.svg" alt="STAT">
+      <img src="/assets/clients/bitly.svg" alt="Bitly">
+      <img src="/assets/clients/flourish.svg" alt="Flourish">
+      <img src="/assets/clients/tidio.svg" alt="Tidio">
+      <img src="/assets/clients/bx.svg" alt="Buildxact">
+      <img src="/assets/clients/rockwell.svg" alt="Rockwell Automation">
+      <img src="/assets/clients/paychex.svg" alt="Paychex">
+    </div>
+  </div>
+</section>
+
+<!-- =========== PROCESS STEPS / SERVICES =========== -->
+<section class="fdn-process">
+  <div class="fdn-container">
+    <h2 class="fdn-process__title">We're putting <span class="red-line">"Marketing"</span> Back Into <span class="blue-line">"Content Marketing"</span></h2>
+    <div class="fdn-process__pills">
+      <div class="fdn-process__pill" style="background: var(--secondary-500); color: #fff;">
+        <span class="fdn-process__pill-number">01</span>
+        <span class="fdn-process__pill-label">Research</span>
+        <span class="fdn-process__pill-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </span>
+      </div>
+      <div class="fdn-process__pill" style="background: var(--primary-500); color: #fff;">
+        <span class="fdn-process__pill-number">02</span>
+        <span class="fdn-process__pill-label">Create</span>
+        <span class="fdn-process__pill-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg>
+        </span>
+      </div>
+      <div class="fdn-process__pill" style="background: var(--color-beige); color: var(--primary-800);">
+        <span class="fdn-process__pill-number">03</span>
+        <span class="fdn-process__pill-label">Distribute</span>
+        <span class="fdn-process__pill-icon" aria-hidden="true" style="background: rgba(7,26,49,0.15);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>
+        </span>
+      </div>
+      <div class="fdn-process__pill" style="background: var(--color-sky-blue); color: var(--primary-800);">
+        <span class="fdn-process__pill-number">04</span>
+        <span class="fdn-process__pill-label">Optimize</span>
+        <span class="fdn-process__pill-icon" aria-hidden="true" style="background: rgba(7,26,49,0.15);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="2" y1="6" y2="6"/><line x1="22" x2="2" y1="18" y2="18"/><line x1="6" x2="6" y1="2" y2="22"/><line x1="18" x2="18" y1="2" y2="22"/></svg>
+        </span>
+      </div>
+    </div>
+    <div class="fdn-process__cards">
+      <div class="fdn-process__card" style="background: var(--secondary-500); color: #fff;">
+        <ul>
+          <li>Competitive Research</li>
+          <li>Audience Research</li>
+          <li>Keyword Research</li>
+          <li>Channel Research</li>
+          <li>Social Research</li>
+          <li>Reddit Research</li>
+          <li>SERP Research</li>
+          <li>LLM Research</li>
+        </ul>
+      </div>
+      <div class="fdn-process__card" style="background: var(--primary-500); color: #fff;">
+        <ul>
+          <li>Short Form Blog Posts</li>
+          <li>Long Form Blog Posts</li>
+          <li>Social Media Content</li>
+          <li>Research Assets</li>
+          <li>Reddit Content</li>
+          <li>Video Content</li>
+          <li>LLM Content</li>
+          <li>Webinars</li>
+          <li>Graphics</li>
+          <li>Quizzes</li>
+        </ul>
+      </div>
+      <div class="fdn-process__card" style="background: var(--color-beige); color: var(--primary-800);">
+        <ul>
+          <li>Content Repurposing</li>
+          <li>Backlink Acquisition</li>
+          <li>Newsletter Content</li>
+          <li>Founder Content</li>
+          <li>Social Media</li>
+          <li>Newsletters</li>
+          <li>YouTube</li>
+          <li>Reddit</li>
+          <li>Sales</li>
+        </ul>
+      </div>
+      <div class="fdn-process__card" style="background: var(--color-sky-blue); color: var(--primary-800);">
+        <ul>
+          <li>Generative Engine</li>
+          <li>Conversion Rate</li>
+          <li>Search Content</li>
+          <li>Data Updates</li>
+          <li>Link Updates</li>
+          <li>On-site SEO</li>
+          <li>Off-site SEO</li>
+          <li>Local SEO</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fdn-process__annotation-row">
+      <div class="fdn-annotation">↑ Most 'content marketing agencies' just do this</div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== STATS SECTION =========== -->
+<section class="fdn-section fdn-section--wide">
+  <div class="fdn-container fdn-section__grid">
+    <div class="fdn-section__label">
+      <div class="fdn-eyebrow">The Numbers</div>
+      <h2 class="fdn-section__title">Outcomes we measure for.</h2>
+      <p class="fdn-section__lede">What changes when content actually compounds, across two-year client engagements.</p>
+    </div>
+    <div class="fdn-section__spacer" aria-hidden="true"></div>
+    <div class="fdn-section__content">
+      <div class="fdn-stat-grid">
+        <div class="fdn-stat">
+          <div class="fdn-stat__value">3.2<span class="fdn-stat__suffix">×</span></div>
+          <div class="fdn-stat__label">Organic Reach</div>
+          <div class="fdn-stat__caption">Median lift across content-led B2B engagements within 6 months.</div>
+        </div>
+        <div class="fdn-stat">
+          <div class="fdn-stat__value">58<span class="fdn-stat__suffix">%</span></div>
+          <div class="fdn-stat__label">Pipeline From Content</div>
+          <div class="fdn-stat__caption">Of inbound deals attributed to long-form editorial.</div>
+        </div>
+        <div class="fdn-stat">
+          <div class="fdn-stat__value">120<span class="fdn-stat__suffix">+</span></div>
+          <div class="fdn-stat__label">Brands Shaped</div>
+          <div class="fdn-stat__caption">Founders, marketers and product teams we've partnered with since 2014.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== PARTNERSHIP SECTION =========== -->
+<section class="fdn-section fdn-section--surface fdn-section--wide">
+  <div class="fdn-container fdn-section__grid">
+    <div class="fdn-section__label">
+      <div class="fdn-eyebrow">The Partnership</div>
+      <h2 class="fdn-section__title">Why Eli Schwartz + Foundation.</h2>
+      <p class="fdn-section__lede">Two firms, one playbook for the brands that need both: SEO that compounds and content that distributes.</p>
+    </div>
+    <div class="fdn-section__spacer" aria-hidden="true"></div>
+    <div class="fdn-section__content">
+      <div class="partner-body">
+        <p>B2B brands that depend on organic search face a sharper problem every quarter. Algorithms shift, AI search reshuffles results, and the gap between "good content" and content that compounds keeps widening. The brands that win build search into their product and editorial, not as an afterthought.</p>
+
+<p>That's the gap this partnership closes. <strong>Eli Schwartz</strong> brings the Product-Led SEO methodology he wrote the book on. He's used the same approach at SurveyMonkey, Shutterstock, and Mixpanel. <strong>Foundation</strong> brings the editorial team, distribution motion, and 12-month content plan. You get both: the strategy and the engine, in one engagement.</p>
+
+<p>Most SEO consultants stop at the strategy slide. Most agencies start when the strategy is already locked. We meet in the middle. Eli sets the direction. Foundation ships the content that earns rankings. Your team walks away with an organic engine that keeps compounding after we're gone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== SPOT ILLUSTRATIONS =========== -->
+<section class="fdn-section fdn-section--navy">
+  <div class="fdn-container fdn-section__grid">
+    <div class="fdn-section__label">
+      <div class="fdn-eyebrow" style="color: var(--secondary-500);">How We Work</div>
+      <h2 class="fdn-section__title">Three motions, woven together.</h2>
+      <p class="fdn-section__lede">Strategy hands off to creation. Creation hands off to distribution. Distribution feeds back into strategy. It's a loop, not a funnel.</p>
+    </div>
+    <div class="fdn-section__spacer" aria-hidden="true"></div>
+    <div class="fdn-section__content">
+      <div class="fdn-spot-grid">
+        <article class="fdn-spot">
+          <div class="fdn-spot__art"><img src="/assets/illustrations/marketing-strategy.svg" alt=""></div>
+          <h3 class="fdn-spot__title">Marketing Strategy</h3>
+          <p class="fdn-spot__body">Where we start. Topical authority, audience signal, and a 12-month editorial line.</p>
+        </article>
+        <article class="fdn-spot">
+          <div class="fdn-spot__art"><img src="/assets/illustrations/content-creation.svg" alt=""></div>
+          <h3 class="fdn-spot__title">Content Creation</h3>
+          <p class="fdn-spot__body">Long-form, video, design, produced by editors who know your category.</p>
+        </article>
+        <article class="fdn-spot">
+          <div class="fdn-spot__art"><img src="/assets/illustrations/campaign-promotion.svg" alt=""></div>
+          <h3 class="fdn-spot__title">Campaign Promotion</h3>
+          <p class="fdn-spot__body">Paid, earned, and partner-led distribution that gets content in front of buyers.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== CTA PANEL =========== -->
+<section class="fdn-cta">
+  <div class="fdn-container fdn-cta__inner">
+    <div class="fdn-cta__copy">
+      <div class="fdn-eyebrow fdn-cta__eyebrow">Let's Talk</div>
+      <h2 class="fdn-cta__headline">Ready to build a content engine that compounds?</h2>
+      <p class="fdn-cta__lede">We work with a handful of ambitious B2B teams each quarter. Tell us about your goals. We'll tell you whether we're the right fit.</p>
+    </div>
+    <div class="fdn-cta__actions">
+      <a class="fdn-btn fdn-btn--coral fdn-btn--lg" href="https://foundationinc.co/contact">Book a Discovery Call</a>
+      <a class="fdn-cta__secondary" href="https://foundationinc.co/case-studies/">Or browse case studies →</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FOOTER =========== -->
+<footer class="fdn-footer">
+  <div class="fdn-container fdn-footer__inner">
+    <div class="fdn-footer__brand">
+      <img src="/assets/logos/foundation-site-logo.svg" alt="Foundation" style="height: 24px; width: auto; display: block;">
+      <p>Content marketing that helps B2B brands shape culture, internally and externally.</p>
+    </div>
+    <div class="fdn-footer__cols">
+      <div class="fdn-footer__col">
+        <div class="fdn-eyebrow">Services</div>
+        <ul>
+          <li><a href="https://foundationinc.co/services/">Strategy</a></li>
+          <li><a href="https://foundationinc.co/services/">Content Creation</a></li>
+          <li><a href="https://foundationinc.co/services/">Distribution</a></li>
+          <li><a href="https://foundationinc.co/services/">Analytics</a></li>
+        </ul>
+      </div>
+      <div class="fdn-footer__col">
+        <div class="fdn-eyebrow">Work</div>
+        <ul>
+          <li><a href="https://foundationinc.co/case-studies/">Case Studies</a></li>
+          <li><a href="https://foundationinc.co/industries/">Industries</a></li>
+          <li><a href="https://foundationinc.co/about/">Approach</a></li>
+        </ul>
+      </div>
+      <div class="fdn-footer__col">
+        <div class="fdn-eyebrow">Company</div>
+        <ul>
+          <li><a href="https://foundationinc.co/about/">About</a></li>
+          <li><a href="https://foundationinc.co/team/">Team</a></li>
+          <li><a href="https://foundationinc.co/careers/">Careers</a></li>
+          <li><a href="https://foundationinc.co/contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="fdn-footer__col">
+        <div class="fdn-eyebrow">Resources</div>
+        <ul>
+          <li><a href="https://foundationinc.co/blog/">Insights</a></li>
+          <li><a href="https://foundationinc.co/newsletter/">Newsletter</a></li>
+          <li><a href="/">Partners</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="fdn-container fdn-footer__base">
+    <span>© Foundation Marketing, Inc.</span>
+    <span class="fdn-footer__legal">
+      <a href="https://foundationinc.co/privacy/">Privacy</a><span>·</span>
+      <a href="https://foundationinc.co/terms/">Terms</a><span>·</span>
+      <span>A partnership with <a href="https://www.elischwartz.co/" target="_blank" rel="noopener">Eli Schwartz</a> · Published May 15, 2026</span>
+    </span>
+  </div>
+</footer>
+
+<!-- =========== BACK TO TOP =========== -->
+<button class="fdn-back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+</button>
+
+</body>
+</html>

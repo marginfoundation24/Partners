@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Foundation Partners — Admin</title>
+
+<link rel="stylesheet" href="/assets/css/foundation-tokens.css">
+
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--site-bg); color: var(--site-fg); min-height: 100vh; }
+  body { font: var(--t-paragraph-03); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-left: clamp(1.5rem, 4vw, 4rem);
+    padding-right: clamp(1.5rem, 4vw, 4rem);
+  }
+
+  /* Topbar */
+  .topbar {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--site-line);
+  }
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .topbar-inner img { height: 24px; width: auto; }
+  .topbar-meta {
+    font: 500 12px/140% var(--font-primary);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--site-fg-meta);
+  }
+
+  /* Gate */
+  .gate {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+  }
+  .gate-card {
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+  }
+  .gate-eyebrow {
+    font: 500 13px/140% var(--font-primary);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--secondary-500);
+    margin-bottom: 1rem;
+  }
+  .gate h1 {
+    font: 700 clamp(1.75rem, 3vw, 2.25rem)/1.15 var(--font-primary);
+    letter-spacing: -0.015em;
+    margin: 0 0 0.75rem;
+    color: var(--site-fg);
+  }
+  .gate-lede {
+    color: var(--site-fg-dim);
+    margin: 0 0 2rem;
+  }
+  .gate-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .gate-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--site-line);
+    color: var(--site-fg);
+    font: var(--t-paragraph-03);
+    border-radius: var(--radius-md);
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+  .gate-input:focus {
+    outline: none;
+    border-color: var(--secondary-500);
+    box-shadow: 0 0 0 3px rgba(221, 96, 82, 0.18);
+  }
+  .gate-btn {
+    background: var(--secondary-500);
+    color: #fff;
+    font: 600 0.95rem/1 var(--font-primary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border-radius: var(--radius-pill);
+    border: none;
+    cursor: pointer;
+    transition: background var(--dur-fast) var(--ease-standard);
+  }
+  .gate-btn:hover { background: var(--secondary-600); }
+  .gate-error {
+    color: var(--secondary-500);
+    font-size: 0.875rem;
+    min-height: 1.25rem;
+    margin-top: 0.5rem;
+  }
+
+  /* Admin app (hidden until passphrase verified) */
+  .app { display: none; padding: 3rem 0 5rem; }
+  .app.is-open { display: block; }
+
+  .app-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .app-head h1 {
+    font: 700 clamp(1.5rem, 2.5vw, 1.875rem)/1.15 var(--font-primary);
+    letter-spacing: -0.015em;
+    margin: 0 0 0.25rem;
+    color: var(--site-fg);
+  }
+  .app-head .subtitle {
+    color: var(--site-fg-meta);
+    font-size: 0.9rem;
+  }
+  .search-box {
+    position: relative;
+    min-width: 280px;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--site-line);
+    color: var(--site-fg);
+    font: var(--t-paragraph-04);
+    border-radius: var(--radius-md);
+  }
+  .search-box input:focus {
+    outline: none;
+    border-color: var(--secondary-500);
+    box-shadow: 0 0 0 3px rgba(221, 96, 82, 0.18);
+  }
+  .search-box::before {
+    content: "⌕";
+    position: absolute;
+    left: 0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--site-fg-meta);
+    font-size: 1.1rem;
+    pointer-events: none;
+  }
+
+  .partner-list {
+    background: var(--bg-surface);
+    border: 1px solid var(--site-line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .partner-row {
+    display: grid;
+    grid-template-columns: 280px 1fr 32px;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--site-line);
+    color: var(--site-fg);
+    transition: background var(--dur-fast) var(--ease-standard);
+  }
+  .partner-row:last-child { border-bottom: none; }
+  .partner-row:hover { background: rgba(255, 234, 225, 0.04); }
+
+  .partner-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--site-fg);
+    margin-bottom: 0.2rem;
+  }
+  .partner-date {
+    font-size: 0.78rem;
+    color: var(--site-fg-meta);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .partner-headline {
+    color: var(--site-fg-dim);
+    font-size: 0.95rem;
+  }
+  .partner-arrow {
+    color: var(--site-fg-meta);
+    font-size: 1.2rem;
+    text-align: right;
+  }
+  .partner-row:hover .partner-arrow { color: var(--secondary-500); }
+
+  .empty,
+  .no-results {
+    padding: 4rem 1.5rem;
+    text-align: center;
+    color: var(--site-fg-meta);
+    font-size: 0.95rem;
+  }
+  .no-results { display: none; }
+
+  @media (max-width: 720px) {
+    .partner-row { grid-template-columns: 1fr 24px; gap: 0.75rem; }
+    .partner-headline { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a href="/admin/"><img src="/assets/logos/logo-wordmark-light.png" alt="Foundation"></a>
+    <div class="topbar-meta">Partner Program Admin</div>
+  </div>
+</header>
+
+<!-- Gate screen -->
+<section class="gate" id="gate">
+  <div class="gate-card">
+    <div class="gate-eyebrow">Foundation Partners</div>
+    <h1>Admin access</h1>
+    <p class="gate-lede">Enter the passphrase to view all published partner pages.</p>
+    <form class="gate-form" id="gate-form" autocomplete="off">
+      <input type="password" id="gate-input" class="gate-input" placeholder="Passphrase" autocomplete="current-password" autofocus>
+      <button type="submit" class="gate-btn">Enter</button>
+      <div class="gate-error" id="gate-error" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<!-- App (hidden until passphrase matches) -->
+<main class="app container" id="app">
+  <header class="app-head">
+    <div>
+      <h1>Published partner pages</h1>
+      <div class="subtitle">1 live · sorted newest first</div>
+    </div>
+    <div class="search-box">
+      <input type="text" id="filter" placeholder="Search partners..." autocomplete="off">
+    </div>
+  </header>
+
+  <div class="partner-list" id="partner-list">
+    <a href="/eli-schwartz/" class="partner-row" data-name="Eli Schwartz" data-website="https://www.elischwartz.co/"><div><div class="partner-name">Eli Schwartz</div><div class="partner-date">Published May 15, 2026</div></div><div class="partner-headline">Two Firms. One Search Playbook.</div><div class="partner-arrow">→</div></a>
+  </div>
+
+  <div class="no-results" id="no-results">No partners match your search.</div>
+</main>
+
+<script>
+  // Hash gate. Bypassable via View Source — but the repo is private, so
+  // the served HTML is the only public surface. This is a friction layer
+  // for casual visitors, not a real security boundary.
+  //
+  // The hash below is SHA-256 of the configured passphrase, baked in at
+  // publish time by the publish-partner skill.
+  var PASSPHRASE_HASH_HEX = "ffa694e968f666b675802e32fa930b511bb628ebbc0cd6e79477f62fd9610792";
+
+  async function sha256Hex(str) {
+    var enc = new TextEncoder().encode(str);
+    var hash = await crypto.subtle.digest("SHA-256", enc);
+    return Array.from(new Uint8Array(hash))
+      .map(function (b) { return b.toString(16).padStart(2, "0"); })
+      .join("");
+  }
+
+  function openApp() {
+    document.getElementById("gate").style.display = "none";
+    document.getElementById("app").classList.add("is-open");
+    document.body.dataset.unlocked = "1";
+
+    // Wire search after app is visible
+    var input = document.getElementById("filter");
+    var rows = document.querySelectorAll(".partner-row");
+    var noResults = document.getElementById("no-results");
+    var list = document.getElementById("partner-list");
+
+    input.addEventListener("input", function () {
+      var q = input.value.trim().toLowerCase();
+      var visible = 0;
+      rows.forEach(function (r) {
+        var hay = [
+          (r.dataset.name || ""),
+          (r.dataset.website || ""),
+          (r.textContent || "")
+        ].join(" ").toLowerCase();
+        var show = !q || hay.indexOf(q) !== -1;
+        r.style.display = show ? "" : "none";
+        if (show) visible++;
+      });
+      noResults.style.display = visible === 0 ? "block" : "none";
+      list.style.display = visible === 0 ? "none" : "";
+    });
+
+    try {
+      sessionStorage.setItem("fnd-partner-admin", "1");
+    } catch (e) { /* no-op */ }
+  }
+
+  document.getElementById("gate-form").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    var input = document.getElementById("gate-input");
+    var err = document.getElementById("gate-error");
+    err.textContent = "";
+
+    var attempt = (input.value || "").trim();
+    if (!attempt) { err.textContent = "Enter the passphrase."; return; }
+
+    var hash = await sha256Hex(attempt);
+    if (hash === PASSPHRASE_HASH_HEX) {
+      openApp();
+    } else {
+      err.textContent = "Wrong passphrase.";
+      input.value = "";
+      input.focus();
+    }
+  });
+
+  // Auto-open if already unlocked this session
+  try {
+    if (sessionStorage.getItem("fnd-partner-admin") === "1") openApp();
+  } catch (e) { /* no-op */ }
+</script>
+
+</body>
+</html>

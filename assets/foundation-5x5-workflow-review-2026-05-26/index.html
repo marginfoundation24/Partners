@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foundation 5x5 Discovery Workflow — A-to-Z Review</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { background: #faf7f2 !important; color: #0f1318 !important; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 28px; font-weight: 700; margin: 0 0 8px; color: #0f1318 !important; }
+  .subtitle { color: #5a6578; font-size: 15px; margin-bottom: 32px; }
+  h2 { font-size: 20px; font-weight: 600; margin: 36px 0 12px; color: #ff5b3a !important; border-bottom: 2px solid #ffece8; padding-bottom: 6px; }
+  h3 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; color: #0f1318 !important; }
+  p, li { color: #0f1318 !important; font-size: 14.5px; }
+  ul, ol { margin: 8px 0; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  code { background: #f0ebe4; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #b3422b; }
+  .status { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+  .status.on { background: #e6f4ea; color: #137333; }
+  .status.off { background: #fce8e6; color: #c5221f; }
+  .status.warn { background: #fef3e8; color: #b06000; }
+  .box { background: #fff; border: 1px solid #e8e0d6; border-radius: 8px; padding: 18px 20px; margin: 14px 0; }
+  .box.warn { border-left: 4px solid #ff5b3a; }
+  .box.ok { border-left: 4px solid #137333; }
+  .box.idea { border-left: 4px solid #4285f4; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #e8e0d6; }
+  th { font-weight: 600; background: #f7f4ef; }
+  .small { font-size: 12.5px; color: #5a6578; }
+  .toc { background: #fff; border: 1px solid #e8e0d6; border-radius: 8px; padding: 16px 20px; margin-bottom: 28px; }
+  .toc a { color: #ff5b3a; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .toc li { margin-bottom: 4px; }
+  .idea-tag { display: inline-block; background: #e8f0fe; color: #1967d2; padding: 1px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-right: 6px; }
+  .risk-tag { display: inline-block; background: #fce8e6; color: #c5221f; padding: 1px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-right: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>foundation-5x5 discovery workflow: a-to-z review</h1>
+<p class="subtitle">current state + improvement ideas · reviewed 2026-05-26</p>
+
+<div class="toc">
+<strong>contents</strong>
+<ol>
+<li><a href="#s1">system overview</a></li>
+<li><a href="#s2">the discovery pipeline (step by step)</a></li>
+<li><a href="#s3">ipp scoring rubric (v1.2)</a></li>
+<li><a href="#s4">hubspot data model</a></li>
+<li><a href="#s5">rehearsal vs production cadence</a></li>
+<li><a href="#s6">what's working</a></li>
+<li><a href="#s7">gaps, risks, and blind spots</a></li>
+<li><a href="#s8">recommended improvements</a></li>
+<li><a href="#s9">open questions for david</a></li>
+</ol>
+</div>
+
+<h2 id="s1">1. system overview</h2>
+
+<table>
+<tr><th>component</th><th>status</th><th>detail</th></tr>
+<tr>
+<td>cloudflare workflow <code>wf-foundation-5x5</code></td>
+<td><span class="status on">deployed</span></td>
+<td>script deployed, cron <strong>disabled</strong> (manual-only for now)</td>
+</tr>
+<tr>
+<td>d1 database <code>foundation-run-logs</code></td>
+<td><span class="status on">active</span></td>
+<td>6 tables, 123KB, logging all runs + tool calls</td>
+</tr>
+<tr>
+<td>kv namespace <code>foundation-5x5-state</code></td>
+<td><span class="status on">active</span></td>
+<td>used for dedupe state across runs</td>
+</tr>
+<tr>
+<td>hubspot write access</td>
+<td><span class="status on">active</span></td>
+<td>contacts + deals + associations + notes</td>
+</tr>
+<tr>
+<td>rehearsal skill (mozart)</td>
+<td><span class="status on">active</span></td>
+<td>publishes to partners.foundationinc.co/assets/</td>
+</tr>
+<tr>
+<td>production cron (daily 6am et)</td>
+<td><span class="status off">paused</span></td>
+<td>intentionally disabled until rehearsal confidence is high</td>
+</tr>
+</table>
+
+<p class="small">3 runs completed so far (all on 2026-05-26). 2 manual, 1 cron. all 3 returned 0 candidates written. this is expected — the pipeline fires but the scoring/drafting logic is still being calibrated.</p>
+
+<h2 id="s2">2. the discovery pipeline (13 steps)</h2>
+
+<p>this is the full chain that <code>wf-foundation-5x5</code> runs every time it fires. the rehearsal skill (mozart) replicates the same logic manually.</p>
+
+<div class="box ok">
+<strong>step 1. load foundation profile from d1</strong><br>
+voice, icp, services, commission terms. this is the "brief" the agent carries for every run.
+</div>
+
+<div class="box ok">
+<strong>step 2. discover candidates (multi-source)</strong><br>
+<ul>
+<li><strong>apify</strong> — linkedin profile search + jobs scraper for fractional cmo / advisor / consultant roles</li>
+<li><strong>exa.ai</strong> — semantic search for recent posts about reddit gtm, geo, youtube ads, linkedin growth</li>
+<li><strong>firecrawl</strong> — web scraping for personal sites, portfolio pages, podcast guest lists</li>
+</ul>
+</div>
+
+<div class="box ok">
+<strong>step 3. dedupe against hubspot</strong><br>
+checks existing contacts by email, linkedin url, and name+company match. prevents re-surfacing eli schwartz, kevin indig, etc.
+</div>
+
+<div class="box ok">
+<strong>step 4. enrich via browserbase + firecrawl</strong><br>
+js-rendered pages (linkedin, substack) scraped for: full bio, client list, recent posts, audience size, service focus.
+</div>
+
+<div class="box warn">
+<strong>step 5. find + verify email (6-tier cascade)</strong><br>
+find-email tool cascades through multiple sources. verifies via email list verify api. <em>risk: some valid emails get dropped here — needs calibration.</em>
+</div>
+
+<div class="box ok">
+<strong>step 6. score against ipp rubric v1.2</strong><br>
+100-point rubric, 6 lenses. cheap model tier (haiku). outputs score + tier + rationale.
+</div>
+
+<div class="box ok">
+<strong>step 7. rank + pick top 5</strong><br>
+mix of a-tier (75+) and b-tier (50-74). forces diversity, not just highest scores. c-tier (25-49) and dq (<25) are dropped.
+</div>
+
+<div class="box ok">
+<strong>step 8. write dossier (a/b only)</strong><br>
+250-400 word structured brief per candidate. mid model tier (sonnet). includes portfolio fit, service signals, warm-intro path, outreach angle.
+</div>
+
+<div class="box ok">
+<strong>step 9. draft first-touch email</strong><br>
+top model tier (sonnet). david's voice: hi {first}, 80-100 words, specific anchor, no links, "cheers, david" sign-off.
+</div>
+
+<div class="box ok">
+<strong>step 10. draft 4 follow-ups (tapered length)</strong><br>
+cheap model tier (haiku). day 3 bump (<50 words), day 7 angle shift, day 12 value-add, day 18 close-the-loop (<30 words).
+</div>
+
+<div class="box warn">
+<strong>step 11. upsert hubspot contact + 11 custom properties</strong><br>
+<code>ipp_score, tier, rationale, partner_status, last_agent_run, partner_dossier, email_first_touch_body, followup_1_body..followup_4_body</code>. <em>risk: these custom props need to exist in hubspot before first write.</em>
+</div>
+
+<div class="box ok">
+<strong>step 12. enroll in "foundation partner outreach" sequence (paused)</strong><br>
+sequences are auto-generated but enrollment is paused. david reviews + unpauses the ones he wants to send.
+</div>
+
+<div class="box ok">
+<strong>step 13. log run to d1</strong><br>
+run metadata, cost, token usage, candidates found, candidates written, errors. d1 table <code>run_logs</code>.
+</div>
+
+<h2 id="s3">3. ipp scoring rubric (v1.2 — locked 2026-05-20)</h2>
+
+<table>
+<tr><th>lens</th><th>weight</th><th>what it measures</th></tr>
+<tr><td>fit</td><td>25</td><td>title / role. tier 1 = 35 pts (fractional cmo, head of growth, marketing advisor, etc). tier 2 = 22 pts (director / vp going indie).</td></tr>
+<tr><td>portfolio</td><td>20</td><td>client overlap with foundation icp. b2b saas, manufacturing, cybersecurity, education, b2b tech. $50m+ arr. us/canada.</td></tr>
+<tr><td>network</td><td>10</td><td>ross 1st-degree + mutual connections. warm intro path.</td></tr>
+<tr><td>audience</td><td>20</td><td>newsletter, podcast, linkedin following, creator velocity. 5k+ followers or active newsletter = strong signal.</td></tr>
+<tr><td>intent</td><td>20</td><td>what they're posting. reddit content (most), youtube (high), geo/seo/social (medium). partner-platform mentions (profound, peec, etc) = bonus.</td></tr>
+<tr><td>timing</td><td>5</td><td>recent role change, fresh budget, new practice launch.</td></tr>
+</table>
+
+<p><strong>tier mapping:</strong> a (75-100) → full treatment. b (50-74) → full treatment, lower priority. c (25-49) → watchlist, no drafts. dq (0-24 or zero icp overlap) → archived.</p>
+
+<p><strong>hard dq rule:</strong> if portfolio has zero icp overlap, auto-dq regardless of other scores.</p>
+
+<h2 id="s4">4. hubspot data model</h2>
+
+<table>
+<tr><th>object</th><th>what we track</th><th>notes</th></tr>
+<tr>
+<td><strong>contact</strong></td>
+<td>standard fields + 11 custom props</td>
+<td><code>ipp_score</code>, <code>tier</code>, <code>rationale</code>, <code>partner_status</code>, <code>last_agent_run</code>, <code>partner_dossier</code>, <code>email_first_touch_body</code>, <code>followup_1..4_body</code></td>
+</tr>
+<tr>
+<td><strong>deal</strong> (production only)</td>
+<td>partnerships pipeline, stage "sourced"</td>
+<td>deal auto-created on hubspot write. contact associated. amount = $0 until negotiated.</td>
+</tr>
+<tr>
+<td><strong>sequence</strong></td>
+<td>foundation partner outreach</td>
+<td>paused enrollment. david reviews each contact before unpausing. cadence: d0 / d3 / d7 / d12 / d18.</td>
+</tr>
+</table>
+
+<h2 id="s5">5. rehearsal vs production cadence</h2>
+
+<table>
+<tr><th>mode</th><th>trigger</th><th>output</th><th>hubspot?</th><th>cost</th></tr>
+<tr>
+<td><strong>rehearsal</strong></td>
+<td>david says "run a rehearsal" or wants to test a topic</td>
+<td>branded html page at partners.foundationinc.co/assets/</td>
+<td>no</td>
+<td>~$0.20-0.40 per 3 candidates</td>
+</tr>
+<tr>
+<td><strong>production</strong></td>
+<td>cron (daily 6am et) or manual trigger</td>
+<td>contacts + deals in hubspot, paused sequences</td>
+<td>yes</td>
+<td>~$0.50-1.50 per 5 candidates</td>
+</tr>
+</table>
+
+<h2 id="s6">6. what's working</h2>
+
+<ul>
+<li><strong>multi-source discovery is robust.</strong> exa for semantic, apify for linkedin, firecrawl for web. three legs, less single-source-of-truth risk.</li>
+<li><strong>ipp rubric is specific.</strong> the 6-lens, 100-point system with hard dq prevents garbage-in. eli schwartz lesson is encoded.</li>
+<li><strong>rehearsal loop is the right iteration surface.</strong> david reviews, gives feedback, we tighten. no hubspot pollution during calibration.</li>
+<li><strong>d1 logging is comprehensive.</strong> every tool call, every run, every token. we can audit backward.</li>
+<li><strong>hubspot scopes are now fully wired.</strong> contacts + deals + associations + notes. pipeline stages mapped.</li>
+<li><strong>email voice is locked to david's spec.</strong> no links in cold emails, word ceilings enforced, "cheers, david" sign-off.</li>
+</ul>
+
+<h2 id="s7">7. gaps, risks, and blind spots</h2>
+
+<div class="box warn">
+<span class="risk-tag">risk</span> <strong>1. zero candidates written in all 3 runs so far</strong><br>
+every run completed "successfully" but surfaced 0 candidates to hubspot. this means either: the scoring is too strict, discovery sources are returning junk, or the enrichment chain is failing silently. we cannot graduate to production until a run produces at least 3-5 viable candidates david agrees with.
+</div>
+
+<div class="box warn">
+<span class="risk-tag">risk</span> <strong>2. email verification cascade may be over-aggressive</strong><br>
+if a candidate is perfect on every lens but email verify fails (email_disabled, invalid_mx), they get dropped. we need a fallback: flag for manual email lookup instead of hard-drop.
+</div>
+
+<div class="box warn">
+<span class="risk-tag">risk</span> <strong>3. hubspot custom properties may not exist yet</strong><br>
+the 11 custom contact properties (ipp_score, tier, rationale, etc.) need to be created in hubspot before the workflow writes them. if they don't exist, the upsert will silently drop data or error.
+</div>
+
+<div class="box warn">
+<span class="risk-tag">risk</span> <strong>4. no dedupe against known bad leads</strong><br>
+we dedupe against existing hubspot contacts, but we don't have a blocklist for candidates david has already reviewed and rejected. a rejected candidate could resurface on a future run if their hubspot record was deleted or if they have a different email.
+</div>
+
+<div class="box warn">
+<span class="risk-tag">risk</span> <strong>5. linkedin scraping brittleness</strong><br>
+apify linkedin actors work well but linkedin rate-limits aggressively. if the actor is throttled, we may get partial profiles or empty results. no retry/backoff logic is visible in the current pipeline.
+</div>
+
+<div class="box warn">
+<span class="risk-tag">risk</span> <strong>6. no signal for when a candidate's situation changes</strong><br>
+once a c-tier candidate is watchlisted, we don't monitor them. if they post a viral reddit thread next month, get a podcast, or go full-time fractional, we miss it. no re-evaluation trigger.
+</div>
+
+<div class="box warn">
+<span class="risk-tag">risk</span> <strong>7. sequence is hubspot-native, not instantly</strong><br>
+if hubspot sequences have volume limits or deliverability issues, we have no fallback. instantly is in the stack but not wired as a fallback in the workflow.
+</div>
+
+<h2 id="s8">8. recommended improvements</h2>
+
+<h3>8.1. fix the zero-candidates problem (priority 1)</h3>
+<ul>
+<li>run 3-5 rehearsals this week with david reviewing each.</li>
+<li>adjust scoring thresholds: consider "b-tier with strong intent" as valid candidates even if portfolio is thin.</li>
+<li>add a manual override: if david gives a name, bypass scoring and run enrichment directly.</li>
+<li>log the full discovery output (even dq'd candidates) so we can see where the funnel drops.</li>
+</ul>
+
+<h3>8.2. add a "soft pass" for email failures (priority 2)</h3>
+<ul>
+<li>if email verify fails but candidate is a-tier, create the hubspot contact anyway with a "needs email" flag.</li>
+<li>david or mozart can manually source the email via rocketreach, zoominfo, or linkedin dm.</li>
+</ul>
+
+<h3>8.3. audit hubspot custom properties (priority 2)</h3>
+<ul>
+<li>confirm all 11 properties exist in hubspot. if any are missing, create them before first production write.</li>
+<li>properties: <code>ipp_score</code> (number), <code>tier</code> (dropdown: a/b/c/dq), <code>rationale</code> (textarea), <code>partner_status</code> (dropdown: sourced/engaged/agreement/activated/first referral/revenue/nurturing), <code>last_agent_run</code> (date), <code>partner_dossier</code> (textarea), <code>email_first_touch_body</code> (textarea), <code>followup_1..4_body</code> (textarea each).</li>
+</ul>
+
+<h3>8.4. build a rejection blocklist (priority 3)</h3>
+<ul>
+<li>when david rejects a candidate, log to d1 <code>rejections</code> table with reason.</li>
+<li>future runs check this table before scoring. prevents resurfacing.</li>
+<li>optionally add an "auto-retry in 6 months" flag for timing-dependent rejections.</li>
+</ul>
+
+<h3>8.5. add retry/backoff for linkedin scraping (priority 3)</h3>
+<ul>
+<li>if apify returns empty, retry once after 30s with a different actor or proxy.</li>
+<li>fallback: use exa to find their latest post as a signal even if linkedin profile is blocked.</li>
+</ul>
+
+<h3>8.6. lightweight signal monitoring for watchlisted contacts (priority 4)</h3>
+<ul>
+<li>once a week, check c-tier candidates for: new linkedin post, new newsletter issue, role change, podcast appearance.</li>
+<li>if signal strength increases, bump to b-tier and alert david.</li>
+<li>this prevents us from missing a candidate who "grows into" the icp.</li>
+</ul>
+
+<h3>8.7. wire instantly as a fallback sender (priority 4)</h3>
+<ul>
+<li>if hubspot sequence enrollment fails or rate-limits, log to d1 and optionally trigger an instantly campaign.</li>
+<li>this is mostly insurance — only needed if hubspot becomes a bottleneck.</li>
+</ul>
+
+<h3>8.8. manual lead ingestion workflow (new capability, priority 2)</h3>
+<p>david will hand us leads in 3 shapes:</p>
+<ul>
+<li><strong>csv bulk list</strong> — linkedin urls, names + companies, or raw exports. we parse, enrich, score, draft, push to hubspot in batch.</li>
+<li><strong>one-at-a-time</strong> — david texts a name or linkedin url. we run the full pipeline for that single contact, return a dossier + draft in ~2 minutes, ask if he wants it in hubspot.</li>
+<li><strong>handful (3-10)</strong> — similar to csv but smaller. we can run these synchronously in one rehearsal-style page for review.</li>
+</ul>
+<p>this should be a distinct mozart skill: <code>foundation/ingest-leads</code>. same pipeline as 5x5 but with csv/linkedin/name input instead of agent discovery.</p>
+
+<h2 id="s9">9. open questions for david</h2>
+
+<ol>
+<li><strong>rejection policy:</strong> when you reject a candidate, is it forever or "check back in 6 months"? this changes whether we need a blocklist vs a timed cooling-off.</li>
+<li><strong>email sourcing fallback:</strong> if we can't find a verified email for an a-tier candidate, do you want us to flag it for manual lookup or skip them entirely?</li>
+<li><strong>c-tier monitoring:</strong> do you want to be notified when a watchlisted candidate posts something relevant, or should that be silent until they cross into b-tier?</li>
+<li><strong>manual lead ingestion:</strong> what's your most common input format? linkedin url, name + company, or csv export? we should optimize the happy path.</li>
+<li><strong>production graduation criteria:</strong> how many clean rehearsal batches (where you agree with 3/3 or 4/5 candidates) before you're comfortable turning on the daily cron?</li>
+</ol>
+
+<div class="box" style="margin-top: 40px; border-top: 2px solid #ff5b3a;">
+<p><strong>next step:</strong> once david reviews this doc, we'll run our first proper rehearsal with real candidates. we'll publish the output, david gives yes/no/maybe feedback, and we iterate from there.</p>
+</div>
+
+</div>
+</body>
+</html>

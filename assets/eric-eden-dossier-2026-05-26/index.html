@@ -370,7 +370,87 @@
 <p><strong>Best Outreach Channel:</strong> LinkedIn DM or podcast guest inquiry</p>
 <hr />
 <h2>Sample Outreach</h2>
-<p>See <code>eric-eden-outreach.md</code> for full email sequence.</p>
+<p><button id="outreachToggle" class="outreach-toggle">Show email sequence ↓</button></p>
+<div id="outreachContent" class="outreach-collapsed" style="display:none;">
+
+<h1>Eric Eden — Sample Outreach Sequence</h1>
+<p><strong>Voice:</strong> David Reilly (Foundation)<br />
+<strong>Tone:</strong> Conversational, specific, no fluff<br />
+<strong>Goal:</strong> Get a reply, not a meeting</p>
+<hr />
+<h2>Email 1 — Cold Outreach (Under 100 words)</h2>
+<p><strong>Subject:</strong> podcast + partnerships</p>
+<p>Hi Eric,</p>
+<p>Saw your episode with Dave Mastovich on the Remarkable Marketing Podcast — the "six right fit target markets" framework stuck with me. Most partnership programs spray and pray; that approach of qualifying before engaging is exactly what we're building at Foundation.</p>
+<p>We help fractional CMOs and advisors like you get matched with early-stage SaaS companies that actually fit — no more wasted intros.</p>
+<p>Worth exploring?</p>
+<p>Cheers, David</p>
+<hr />
+<h2>Email 2 — Follow-Up 1 (Under 50 words)</h2>
+<p><strong>Subject:</strong> re: podcast + partnerships</p>
+<p>Hey Eric,</p>
+<p>Quick follow — we've got a few fractional CMOs in our network who'd be perfect guests for your podcast. Happy to make intros either way.</p>
+<p>Still curious if the partnership angle resonates.</p>
+<p>Cheers, David</p>
+<hr />
+<h2>Email 3 — Final Touch (Under 30 words)</h2>
+<p><strong>Subject:</strong> last try</p>
+<p>Eric — passing on this. If you ever want to chat partnerships or swap podcast guest ideas, I'm around.</p>
+<p>Cheers, David</p>
+<hr />
+<h2>Alternative Angle — AI/Content Collaboration</h2>
+<p><strong>Subject:</strong> AI + marketing ops</p>
+<p>Hi Eric,</p>
+<p>Your "Top 1% Power User of AI" post hit home — especially the point about thinking like a movie director, not a manager. That's exactly how we're approaching partnership ops at Foundation.</p>
+<p>We're building an AI-native partner program for early-stage SaaS companies. I'd love to get your take on where AI is actually moving the needle in marketing ops vs. where it's just hype.</p>
+<p>No pitch — genuinely curious about your perspective.</p>
+<p>Cheers, David</p>
+<hr />
+<h2>Alternative Angle — Podcast Collaboration</h2>
+<p><strong>Subject:</strong> guest swap?</p>
+<p>Hey Eric,</p>
+<p>Been listening to Remarkable Marketing — the episode with Bryan Kramer on "Human to Human" marketing was a standout.</p>
+<p>I'm building a partner program for early-stage SaaS at Foundation. Would love to come on and talk about how partnerships are becoming the new growth channel for founders who can't afford paid acquisition.</p>
+<p>Also happy to introduce you to a few CMOs in our network who'd make great guests.</p>
+<p>Cheers, David</p>
+<hr />
+<h2>Notes</h2>
+<ul>
+<li><strong>No links in cold emails</strong> — David sends these manually after engagement</li>
+<li><strong>Specific references</strong> — each email references a real episode or post</li>
+<li><strong>Low-friction asks</strong> — "Worth exploring?" beats "Can we book a call?"</li>
+<li><strong>Reciprocity</strong> — offer value (intros, content) before asking</li>
+</ul>
+<hr />
+<p><em>Outreach drafted by Mozart, Foundation Partnerships Intelligence</em></p>
+
+</div>
+
+<script>
+(function() {
+  var btn = document.getElementById('outreachToggle');
+  var content = document.getElementById('outreachContent');
+  if (btn && content) {
+    btn.addEventListener('click', function() {
+      var isHidden = content.style.display === 'none';
+      content.style.display = isHidden ? 'block' : 'none';
+      btn.textContent = isHidden ? 'Hide email sequence ↑' : 'Show email sequence ↓';
+    });
+  }
+})();
+</script>
+
+<style>
+.outreach-toggle {
+  background: #ff5b3a; color: #0f1318; border: none;
+  padding: 10px 18px; font: inherit; font-size: 14px; font-weight: 600;
+  cursor: pointer; border-radius: 4px; margin: 8px 0;
+  letter-spacing: 0.02em;
+}
+.outreach-toggle:hover { opacity: 0.9; }
+.outreach-collapsed { margin-top: 16px; }
+</style>
+
 <hr />
 <h2>Scoring</h2>
 <table>

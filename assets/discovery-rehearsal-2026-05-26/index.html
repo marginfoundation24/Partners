@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="description" content="3 fractional CMOs scored against IPP v1.2 rubric">
+<meta name="asset:slug" content="discovery-rehearsal-2026-05-26">
+<meta name="asset:published" content="2026-05-26">
+<title>wf-foundation-5x5 discovery rehearsal — Foundation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --gate-bg: #0f1318;
+    --gate-fg: #f5efe6;
+    --accent: #ff5b3a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    background: #faf7f2 !important; color: #0f1318 !important;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  /* Password gate */
+  .gate {
+    position: fixed; inset: 0;
+    background: var(--gate-bg); color: var(--gate-fg);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9999;
+  }
+  .gate.hidden { display: none; }
+  .gate-box {
+    max-width: 420px; padding: 56px 32px; text-align: center;
+  }
+  .gate-brand {
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    opacity: 0.7; margin-bottom: 28px; font-weight: 500;
+  }
+  .gate-h {
+    font-size: 28px; font-weight: 600; margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .gate-p {
+    font-size: 14px; opacity: 0.65; margin-bottom: 32px;
+  }
+  .gate-form {
+    display: flex; border: 1px solid var(--gate-fg);
+    background: transparent;
+  }
+  .gate-form input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: var(--gate-fg); padding: 14px 16px;
+    font: inherit; font-size: 15px;
+  }
+  .gate-form input::placeholder { color: rgba(245, 239, 230, 0.4); }
+  .gate-form button {
+    background: var(--accent); color: var(--gate-bg);
+    border: none; padding: 0 22px; cursor: pointer;
+    font: inherit; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    transition: opacity 0.12s;
+  }
+  .gate-form button:hover { opacity: 0.85; }
+  .gate-err {
+    color: var(--accent); font-size: 13px; margin-top: 14px;
+    display: none;
+  }
+  .gate-err.show { display: block; }
+
+  /* Page content */
+  .page { max-width: 760px; margin: 0 auto; padding: 56px 24px 96px; }
+  .header {
+    border-bottom: 1px solid rgba(15, 19, 24, 0.1);
+    padding-bottom: 24px; margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 16px;
+  }
+  h1 {
+    font-size: clamp(28px, 4vw, 40px); font-weight: 700;
+    line-height: 1.15; letter-spacing: -0.015em;
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    font-size: 17px; color: rgba(15, 19, 24, 0.65);
+    line-height: 1.4;
+  }
+  .meta {
+    font-size: 12px; color: rgba(15, 19, 24, 0.5);
+    margin-top: 18px; letter-spacing: 0.04em;
+  }
+
+  .content { font-size: 16px; line-height: 1.65; color: #0f1318 !important; }
+  .content h2 {
+    font-size: 22px; font-weight: 600; margin-top: 40px; margin-bottom: 14px;
+    letter-spacing: -0.01em; color: #0f1318 !important;
+  }
+  .content h3 {
+    font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 10px;
+    color: #ff5b3a !important;
+  }
+  .content p { margin-bottom: 14px; color: #0f1318 !important; }
+  .content ul, .content ol { padding-left: 24px; margin-bottom: 14px; }
+  .content li { margin-bottom: 6px; color: #0f1318 !important; }
+  .content strong { font-weight: 600; }
+  .content a {
+    color: #ff5b3a !important; text-decoration: underline;
+    text-decoration-thickness: 1px; text-underline-offset: 3px;
+  }
+  .content blockquote {
+    border-left: 2px solid var(--accent);
+    padding-left: 16px; margin: 18px 0;
+    color: rgba(15, 19, 24, 0.75); font-style: italic;
+  }
+  .content code {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    background: rgba(15, 19, 24, 0.06); padding: 2px 6px;
+    border-radius: 3px; font-size: 0.88em;
+  }
+  .content pre {
+    background: var(--gate-bg); color: var(--gate-fg);
+    padding: 16px; margin: 16px 0; overflow-x: auto;
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px;
+    line-height: 1.5;
+  }
+  .content pre code { background: none; padding: 0; color: inherit; }
+  .content table {
+    width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px;
+  }
+  .content th, .content td {
+    padding: 10px 12px; text-align: left;
+    border-bottom: 1px solid rgba(15, 19, 24, 0.1);
+    color: #0f1318 !important;
+  }
+  .content th { font-weight: 600; }
+  .content hr {
+    border: none; border-top: 1px solid rgba(15, 19, 24, 0.1);
+    margin: 32px 0;
+  }
+
+  .footer {
+    margin-top: 64px; padding-top: 24px;
+    border-top: 1px solid rgba(15, 19, 24, 0.1);
+    font-size: 12px; color: rgba(15, 19, 24, 0.5);
+    letter-spacing: 0.04em;
+  }
+  .footer a { color: inherit; }
+</style>
+</head>
+<body>
+
+<!-- password gate -->
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <div class="gate-brand">Foundation × Partners</div>
+    <div class="gate-h">Private access</div>
+    <p class="gate-p">Enter password to view this asset.</p>
+    <form class="gate-form" onsubmit="checkPassword(event)">
+      <input type="password" id="pwInput" placeholder="password" autofocus autocomplete="off">
+      <button type="submit">Enter</button>
+    </form>
+    <div class="gate-err" id="gateErr">Wrong password.</div>
+  </div>
+</div>
+
+<div id="content" class="hidden" style="display: none;">
+
+<main class="page">
+
+  <header class="header">
+    <div class="eyebrow">Foundation × Partners</div>
+    <h1>wf-foundation-5x5 discovery rehearsal</h1>
+    <p class="subtitle">3 fractional CMOs scored against IPP v1.2 rubric</p>
+    <div class="meta">Published 2026-05-26 · prepared by Mozart for the Foundation team</div>
+  </header>
+
+  <article class="content">
+
+<p>This is a discovery rehearsal mimicking the output of the <code>wf-foundation-5x5</code> agent. Three fractional CMO candidates were surfaced via Exa semantic search, enriched via web fetch, scored against the Foundation IPP v1.2 rubric, and drafted for first-touch outreach.</p>
+
+<hr>
+
+<h2>Candidate 1: Brian Swichkow</h2>
+<p><strong>Title:</strong> Fractional CMO to startups<br>
+<strong>Company:</strong> Brian.bot / One Inc Cooperative<br>
+<strong>Location:</strong> Unknown (US-based)<br>
+<strong>Website:</strong> <a href="https://www.brian.bot/about">brian.bot</a></p>
+
+<h3>IPP v1.2 Score: 64 / 100 (Tier B)</h3>
+<table>
+<thead>
+<tr><th>Lens</th><th>Score</th><th>Rationale</th></tr>
+</thead>
+<tbody>
+<tr><td>FIT (25)</td><td>20</td><td>Tier 1 title (fractional CMO). Deep Reddit expertise. Startup focus slightly off Foundation's scale-up ICP.</td></tr>
+<tr><td>PORTFOLIO (20)</td><td>10</td><td>200+ Seed-Series B startups. B2B SaaS exposure (Howitzer, Topia) but mostly early-stage, not $50M+ ARR.</td></tr>
+<tr><td>NETWORK (10)</td><td>2</td><td>No visible Ross Simmonds connection or warm intro path.</td></tr>
+<tr><td>AUDIENCE (20)</td><td>12</td><td>Trained 3,000+ marketers on Reddit growth hacking. Known expert in Reddit marketing community. No newsletter subscriber count found.</td></tr>
+<tr><td>INTENT (20)</td><td>18</td><td>Explicit Reddit marketing focus. Exactly Foundation's #1 service area. Posts and educates on Reddit as a channel.</td></tr>
+<tr><td>TIMING (5)</td><td>2</td><td>No recent role change or fresh budget signals detected.</td></tr>
+</tbody>
+</table>
+
+<h3>Dossier</h3>
+<p>Brian is a rare find: a fractional CMO whose brand is synonymous with Reddit marketing. He has advised 200+ startups, played the CMO seat at venture-backed companies (including Howitzer, a Reddit marketing SaaS), and educated over 3,000 marketers on community-led growth. His portfolio skews Seed to Series B, which is earlier than Foundation's core ICP, but his subject-matter authority is unmatched. If Foundation wants a partner who can credibly refer Reddit work, Brian is the archetype. The open question is whether his clients ever grow into Foundation's ARR range. Worth a conversation to understand his typical client trajectory and whether he currently lacks a execution partner for Reddit demand gen.</p>
+
+<h3>First-touch email (drafted by Mozart in David's voice)</h3>
+<blockquote>
+Hi Brian,<br><br>
+Saw your work with Howitzer and the Reddit marketing playbook you've built for 3,000+ marketers. Foundation runs Reddit demand gen for B2B SaaS companies like Paychex and NetSuite, and I'm building a partner network of fractional CMOs who see Reddit as a real channel, not a side project.<br><br>
+Worth a conversation?<br><br>
+Cheers, David
+</blockquote>
+
+<hr>
+
+<h2>Candidate 2: David Kirkdorffer</h2>
+<p><strong>Title:</strong> Fractional CMO<br>
+<strong>Company:</strong> Outcome Marketing<br>
+<strong>Location:</strong> Boston, MA<br>
+<strong>Website:</strong> <a href="https://outcome.marketing/practitioners/david-kirkdorffer">outcome.marketing</a></p>
+
+<h3>IPP v1.2 Score: 66 / 100 (Tier B)</h3>
+<table>
+<thead>
+<tr><th>Lens</th><th>Score</th><th>Rationale</th></tr>
+</thead>
+<tbody>
+<tr><td>FIT (25)</td><td>23</td><td>Tier 1 title. 25 years B2B tech demand generation. Past CMO, CRO, CEO seats. Strong executive profile.</td></tr>
+<tr><td>PORTFOLIO (20)</td><td>15</td><td>B2B SaaS and tech startups + scale-ups. Boston-based. Good vertical overlap, though "startups" may include sub-$50M ARR.</td></tr>
+<tr><td>NETWORK (10)</td><td>2</td><td>No visible Ross Simmonds connection. Part of Outcome Marketing network.</td></tr>
+<tr><td>AUDIENCE (20)</td><td>8</td><td>No newsletter, podcast, or following numbers surfaced. Lower creator velocity.</td></tr>
+<tr><td>INTENT (20)</td><td>16</td><td>Currently focused on AI-visibility marketing, GEO and LLMO advisory. Strong alignment with Foundation's GEO service line.</td></tr>
+<tr><td>TIMING (5)</td><td>2</td><td>No recent role change or fresh budget signals detected.</td></tr>
+</tbody>
+</table>
+
+<h3>Dossier</h3>
+<p>David is a seasoned B2B tech operator with 25 years across CMO, CRO, and CEO roles. He currently splits time between fractional CMO engagements and AI-visibility consulting, explicitly offering GEO and LLMO advisory. That makes him a natural referral partner for Foundation's generative-engine-optimization work. His client profile (B2B tech startups and scale-ups) has decent overlap with Foundation's ICP, though we need to verify typical company size. Lower audience score because no newsletter or podcast was found, which limits co-marketing potential. Recommended next step: qualify his current client roster for ARR and GEO readiness.</p>
+
+<h3>First-touch email (drafted by Mozart in David's voice)</h3>
+<blockquote>
+Hi David,<br><br>
+Your GEO and LLMO advisory work at Outcome Marketing caught my attention. Foundation has been running generative-engine-optimization for B2B SaaS clients since before it had an acronym, and I'm connecting with fractional CMOs who treat AI visibility as core strategy, not an add-on.<br><br>
+Open to a brief call?<br><br>
+Cheers, David
+</blockquote>
+
+<hr>
+
+<h2>Candidate 3: Oleg Kovalev</h2>
+<p><strong>Title:</strong> Founder & Fractional CMO<br>
+<strong>Company:</strong> ASP Marketing<br>
+<strong>Location:</strong> Unknown<br>
+<strong>Website:</strong> <a href="https://asp-marketing.com/blog/fractional-cmo-for-saas">asp-marketing.com</a></p>
+
+<h3>IPP v1.2 Score: 64 / 100 (Tier B)</h3>
+<table>
+<thead>
+<tr><th>Lens</th><th>Score</th><th>Rationale</th></tr>
+</thead>
+<tbody>
+<tr><td>FIT (25)</td><td>22</td><td>Tier 1 title (fractional CMO). Runs ASP Marketing as a fractional CMO + SEO leadership practice for B2B SaaS.</td></tr>
+<tr><td>PORTFOLIO (20)</td><td>12</td><td>B2B SaaS companies between $1M-$15M ARR. Kladana case study (manufacturing ERP). B2B SaaS overlap but stage is below Foundation's ICP.</td></tr>
+<tr><td>NETWORK (10)</td><td>2</td><td>No visible Ross Simmonds connection or warm intro path.</td></tr>
+<tr><td>AUDIENCE (20)</td><td>10</td><td>Publishes detailed long-form guides and case studies. No explicit newsletter or subscriber count found. Moderate creator velocity.</td></tr>
+<tr><td>INTENT (20)</td><td>16</td><td>Explicitly writes about GEO, AI search, and AI Overviews as core stack for SaaS fractional CMOs. Strong service-area alignment.</td></tr>
+<tr><td>TIMING (5)</td><td>2</td><td>No recent role change or fresh budget signals detected.</td></tr>
+</tbody>
+</table>
+
+<h3>Dossier</h3>
+<p>Oleg runs ASP Marketing, a fractional CMO and SEO leadership practice focused narrowly on B2B SaaS ($500K-$15M ARR). His content is sharp: he published a comprehensive guide on fractional CMO work for SaaS that explicitly treats GEO and AI Overviews as part of the core stack, not a side project. His Kladana case study shows 6x organic traffic growth and 0% to 30% AI citation share in 18 months, which is exactly the kind of proof point Foundation needs in market. The portfolio stage is lower than Foundation's ICP, but his SaaS specialization and GEO fluency make him a strong partner candidate. He may also be a good referral source for clients who outgrow his fractional scope and need full agency execution.</p>
+
+<h3>First-touch email (drafted by Mozart in David's voice)</h3>
+<blockquote>
+Hi Oleg,<br><br>
+Your Kladana case study, 0% to 30% AI citation share in 18 months, is exactly the kind of GEO work we're scaling at Foundation for B2B SaaS clients. I'm building a partner network of fractional CMOs who can refer specialized execution when their clients need it.<br><br>
+Worth a conversation?<br><br>
+Cheers, David
+</blockquote>
+
+<hr>
+
+<h2>Summary</h2>
+<table>
+<thead>
+<tr><th>Candidate</th><th>Score</th><th>Tier</th><th>Strongest Lens</th><th>Weakest Lens</th></tr>
+</thead>
+<tbody>
+<tr><td>Brian Swichkow</td><td>64</td><td>B</td><td>INTENT (Reddit expert)</td><td>PORTFOLIO (early-stage)</td></tr>
+<tr><td>David Kirkdorffer</td><td>66</td><td>B</td><td>FIT (25yr exec)</td><td>AUDIENCE (no newsletter)</td></tr>
+<tr><td>Oleg Kovalev</td><td>64</td><td>B</td><td>INTENT (GEO fluency)</td><td>PORTFOLIO (sub-$15M ARR)</td></tr>
+</tbody>
+</table>
+
+<p>All three candidates are Tier B: strong enough for full treatment (dossier + draft + HubSpot upsert), but lower priority than Tier A partners like Kevin Indig. None have a visible warm intro path through Ross, so cold outreach is the play. Brian is the highest-conviction fit for Foundation's Reddit specialty; David and Oleg are stronger for GEO co-referrals.</p>
+
+  </article>
+
+  <footer class="footer">
+    Foundation Inc · partners.foundationinc.co · <a href="/">return to index</a>
+  </footer>
+
+</main>
+
+</div><!-- /#content -->
+
+<script>
+  (function () {
+    const PASSWORD_HASH = "06cb75f132725b4bb3365dbbe3bed8c53075c49f4fc4b63dc4b91acde5695d3d";
+    const STORAGE_KEY = "foundation_asset_discovery-rehearsal-2026-05-26_unlocked";
+
+    async function sha256Hex(str) {
+      const enc = new TextEncoder().encode(str);
+      const hash = await crypto.subtle.digest("SHA-256", enc);
+      return Array.from(new Uint8Array(hash))
+        .map(function (b) { return b.toString(16).padStart(2, "0"); })
+        .join("");
+    }
+
+    function showContent() {
+      document.getElementById("gate").classList.add("hidden");
+      document.getElementById("content").style.display = "block";
+    }
+
+    window.checkPassword = async function (event) {
+      event.preventDefault();
+      const input = document.getElementById("pwInput");
+      const err = document.getElementById("gateErr");
+      const attempt = input.value;
+      const hash = await sha256Hex(attempt);
+      if (hash === PASSWORD_HASH) {
+        localStorage.setItem(STORAGE_KEY, "1");
+        showContent();
+      } else {
+        err.classList.add("show");
+        input.value = "";
+      }
+    };
+
+    window.addEventListener("DOMContentLoaded", function () {
+      if (localStorage.getItem(STORAGE_KEY) === "1") showContent();
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="description" content="Fractional CMO & Board-Level Advisor — Priority Partner Candidate">
+<meta name="asset:slug" content="eric-eden-dossier-2026-05-26">
+<meta name="asset:published" content="2026-05-26">
+<title>Eric Eden — Partner Dossier — Foundation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<link rel="stylesheet" href="/assets/css/foundation-tokens.css">
+<link rel="stylesheet" href="/assets/css/foundation-kit.css">
+
+<style>
+  :root {
+    --gate-bg: #0f1318;
+    --gate-fg: #f5efe6;
+    --accent: #ff5b3a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    background: #faf7f2; color: #0f1318;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  /* Password gate */
+  .gate {
+    position: fixed; inset: 0;
+    background: var(--gate-bg); color: var(--gate-fg);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9999;
+  }
+  .gate.hidden { display: none; }
+  .gate-box {
+    max-width: 420px; padding: 56px 32px; text-align: center;
+  }
+  .gate-brand {
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    opacity: 0.7; margin-bottom: 28px; font-weight: 500;
+  }
+  .gate-h {
+    font-size: 28px; font-weight: 600; margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .gate-p {
+    font-size: 14px; opacity: 0.65; margin-bottom: 32px;
+  }
+  .gate-form {
+    display: flex; border: 1px solid var(--gate-fg);
+    background: transparent;
+  }
+  .gate-form input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: var(--gate-fg); padding: 14px 16px;
+    font: inherit; font-size: 15px;
+  }
+  .gate-form input::placeholder { color: rgba(245, 239, 230, 0.4); }
+  .gate-form button {
+    background: var(--accent); color: var(--gate-bg);
+    border: none; padding: 0 22px; cursor: pointer;
+    font: inherit; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    transition: opacity 0.12s;
+  }
+  .gate-form button:hover { opacity: 0.85; }
+  .gate-err {
+    color: var(--accent); font-size: 13px; margin-top: 14px;
+    display: none;
+  }
+  .gate-err.show { display: block; }
+
+  /* Page content */
+  .page { max-width: 760px; margin: 0 auto; padding: 56px 24px 96px; }
+  .header {
+    border-bottom: 1px solid rgba(15, 19, 24, 0.1);
+    padding-bottom: 24px; margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 16px;
+  }
+  h1 {
+    font-size: clamp(28px, 4vw, 40px); font-weight: 700;
+    line-height: 1.15; letter-spacing: -0.015em;
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    font-size: 17px; color: rgba(15, 19, 24, 0.65);
+    line-height: 1.4;
+  }
+  .meta {
+    font-size: 12px; color: rgba(15, 19, 24, 0.5);
+    margin-top: 18px; letter-spacing: 0.04em;
+  }
+
+  .content { font-size: 16px; line-height: 1.65; }
+  .content h2 {
+    font-size: 22px; font-weight: 600; margin-top: 40px; margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .content h3 {
+    font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 10px;
+    color: var(--accent);
+  }
+  .content p { margin-bottom: 14px; }
+  .content ul, .content ol { padding-left: 24px; margin-bottom: 14px; }
+  .content li { margin-bottom: 6px; }
+  .content strong { font-weight: 600; }
+  .content a {
+    color: var(--accent); text-decoration: underline;
+    text-decoration-thickness: 1px; text-underline-offset: 3px;
+  }
+  .content blockquote {
+    border-left: 2px solid var(--accent);
+    padding-left: 16px; margin: 18px 0;
+    color: rgba(15, 19, 24, 0.75); font-style: italic;
+  }
+  .content code {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    background: rgba(15, 19, 24, 0.06); padding: 2px 6px;
+    border-radius: 3px; font-size: 0.88em;
+  }
+  .content pre {
+    background: var(--gate-bg); color: var(--gate-fg);
+    padding: 16px; margin: 16px 0; overflow-x: auto;
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px;
+    line-height: 1.5;
+  }
+  .content pre code { background: none; padding: 0; color: inherit; }
+  .content table {
+    width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px;
+  }
+  .content th, .content td {
+    padding: 10px 12px; text-align: left;
+    border-bottom: 1px solid rgba(15, 19, 24, 0.1);
+  }
+  .content th { font-weight: 600; }
+  .content hr {
+    border: none; border-top: 1px solid rgba(15, 19, 24, 0.1);
+    margin: 32px 0;
+  }
+
+  .footer {
+    margin-top: 64px; padding-top: 24px;
+    border-top: 1px solid rgba(15, 19, 24, 0.1);
+    font-size: 12px; color: rgba(15, 19, 24, 0.5);
+    letter-spacing: 0.04em;
+  }
+  .footer a { color: inherit; }
+</style>
+</head>
+<body>
+
+<!-- password gate -->
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <div class="gate-brand">Foundation × Partners</div>
+    <div class="gate-h">Private access</div>
+    <p class="gate-p">Enter password to view this asset.</p>
+    <form class="gate-form" onsubmit="checkPassword(event)">
+      <input type="password" id="pwInput" placeholder="password" autofocus autocomplete="off">
+      <button type="submit">Enter</button>
+    </form>
+    <div class="gate-err" id="gateErr">Wrong password.</div>
+  </div>
+</div>
+
+<div id="content" class="hidden" style="display: none;">
+
+<main class="page">
+
+  <header class="header">
+    <div class="eyebrow">Foundation × Partners</div>
+    <h1>Eric Eden — Partner Dossier</h1>
+    <p class="subtitle">Fractional CMO & Board-Level Advisor — Priority Partner Candidate</p>
+    <div class="meta">Published 2026-05-26 · prepared by Mozart for the Foundation team</div>
+  </header>
+
+  <article class="content">
+<h1>Eric Eden — Partner Dossier</h1>
+<p><strong>Generated:</strong> 2026-05-26<br />
+<strong>Source:</strong> Foundation Partnerships Intelligence<br />
+<strong>Candidate Type:</strong> Fractional CMO / Advisor / Content Creator</p>
+<hr />
+<h2>Executive Summary</h2>
+<p>Eric Eden is a 20+ year B2B SaaS marketing operator turned AI advisor and content creator. He led Cvent's 300-person marketing organization through 10 years of hypergrowth (35% compounded annual revenue growth), then served as CMO at four additional SaaS companies (Socrata, hCentive, Dext, Instapage) before transitioning to advisory roles. He's now co-founder of Prompt Magic, founder of Thinking Deeply AI, and host of the <em>Remarkable Marketing Podcast</em> (200+ episodes).</p>
+<p><strong>Signal Strength:</strong> ⭐⭐⭐⭐⭐ Strong fit for Foundation's partner profile</p>
+<hr />
+<h2>Background &amp; Track Record</h2>
+<h3>Operating Experience</h3>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Role</th>
+<th>Tenure</th>
+<th>Key Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cvent</strong></td>
+<td>SVP Marketing</td>
+<td>2005–2015</td>
+<td>Led 300-person global marketing org. 35% compounded annual revenue growth over 10 years. Key member of senior management team through IPO/exit.</td>
+</tr>
+<tr>
+<td><strong>Socrata</strong></td>
+<td>CMO</td>
+<td>2015–2016</td>
+<td>GovTech / open data platform</td>
+</tr>
+<tr>
+<td><strong>hCentive</strong></td>
+<td>CMO</td>
+<td>2016–2017</td>
+<td>Health insurance exchange technology</td>
+</tr>
+<tr>
+<td><strong>Dext</strong></td>
+<td>CMO</td>
+<td>2017–2019</td>
+<td>Fintech / accounting automation</td>
+</tr>
+<tr>
+<td><strong>Instapage</strong></td>
+<td>CMO</td>
+<td>2020–2021</td>
+<td>Landing page optimization platform</td>
+</tr>
+<tr>
+<td><strong>Information Venture Partners</strong></td>
+<td>Executive In Residence</td>
+<td>2021–2024</td>
+<td>VC firm focused on B2B SaaS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Aggregate Impact:</strong> Led companies to over $8 billion in exits through IPOs and acquisitions (per IMDb bio).</p>
+<h3>Current Ventures</h3>
+<ul>
+<li><strong>Prompt Magic</strong> (Co-Founder &amp; AI Advisor, 2025–Present) — AI prompt library and productivity tool</li>
+<li><strong>Thinking Deeply AI</strong> (Founder &amp; Advisor, 2025–Present) — AI advisory and consulting</li>
+<li><strong>Remarkable Marketing Podcast</strong> (Host) — 200+ episodes interviewing marketing leaders, founders, and creators</li>
+</ul>
+<h3>Content &amp; Thought Leadership</h3>
+<ul>
+<li><strong>Podcast:</strong> <em>Remarkable Marketing Podcast</em> — interviews with CMOs, founders, and marketing innovators</li>
+<li><strong>LinkedIn:</strong> Active poster on AI power-user habits, vibe coding, marketing strategy shifts</li>
+<li><strong>Speaking:</strong> Regular podcast guest (Revenue Rehab, Firing The Man, Renegade Marketing, Singularity Syndicate)</li>
+<li><strong>Topics:</strong> AI in marketing, B2B SaaS growth, marketing leadership, team building</li>
+</ul>
+<hr />
+<h2>Why He Fits Foundation</h2>
+<h3>1. Exact Partner Persona</h3>
+<p>Eden matches Foundation's Ideal Partner Profile precisely: fractional CMO / advisor with deep operator experience who's now building their own brand and advisory practice. He's the archetype the 5x5 discovery workflow is designed to surface.</p>
+<h3>2. VC Network Access</h3>
+<p>His three years as Executive In Residence at Information Venture Partners means he's connected to early-stage B2B SaaS founders who are likely Foundation's ideal customers.</p>
+<h3>3. Content Engine Already Running</h3>
+<p>With an active podcast and LinkedIn presence, he's already doing the work of building audience and authority. A partnership wouldn't require building from scratch.</p>
+<h3>4. AI-Forward Positioning</h3>
+<p>His current ventures (Prompt Magic, Thinking Deeply AI) align with Foundation's AI-native positioning. He's actively thinking about how AI changes marketing and operations.</p>
+<h3>5. Stage Relevance</h3>
+<p>He's worked across the full company lifecycle — from startup to IPO — giving him credibility with founders at every stage Foundation targets.</p>
+<hr />
+<h2>Potential Partnership Angles</h2>
+<table>
+<thead>
+<tr>
+<th>Angle</th>
+<th>Description</th>
+<th>Fit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Content Partnership</strong></td>
+<td>Co-create content on AI + partnerships, or guest on his podcast</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>Advisory Relationship</strong></td>
+<td>His Prompt Magic tool could complement Foundation's offering</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Referral Flow</strong></td>
+<td>VC network and podcast guests are Foundation's ICP</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>Co-Marketing</strong></td>
+<td>Joint webinar or guide on AI-powered marketing operations</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>Partner Page</strong></td>
+<td>Feature him as a verified fractional CMO partner</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Open Questions</h2>
+<ol>
+<li><strong>Capacity:</strong> Is he still taking on fractional CMO engagements, or is he all-in on Prompt Magic?</li>
+<li><strong>Stage Preference:</strong> Does he prefer early-stage (seed/Series A) or more mature companies?</li>
+<li><strong>Geography:</strong> Based in DC — is he open to remote engagements, or does he prefer East Coast?</li>
+<li><strong>Pricing:</strong> What's his typical engagement model — retainer, project-based, equity?</li>
+<li><strong>Current Pipeline:</strong> Is he already working with companies in Foundation's network?</li>
+</ol>
+<hr />
+<h2>Contact Intelligence</h2>
+<ul>
+<li><strong>LinkedIn:</strong> linkedin.com/in/cmo-ericeden</li>
+<li><strong>Email:</strong> eric@promptmagic.dev (inferred from domain)</li>
+<li><strong>Location:</strong> Washington, DC</li>
+<li><strong>Podcast:</strong> Remarkable Marketing Podcast (Buzzsprout/YouTube/Spotify)</li>
+<li><strong>Company:</strong> promptmagic.dev</li>
+</ul>
+<p><strong>Best Outreach Channel:</strong> LinkedIn DM or podcast guest inquiry</p>
+<hr />
+<h2>Sample Outreach</h2>
+<p>See <code>eric-eden-outreach.md</code> for full email sequence.</p>
+<hr />
+<h2>Scoring</h2>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Score</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Audience Fit</strong></td>
+<td>5/5</td>
+<td>Exact ICP match — fractional CMOs/advisors</td>
+</tr>
+<tr>
+<td><strong>Credibility</strong></td>
+<td>5/5</td>
+<td>Cvent IPO, 4x CMO, VC EIR, podcast host</td>
+</tr>
+<tr>
+<td><strong>Content Quality</strong></td>
+<td>4/5</td>
+<td>Strong podcast, active LinkedIn</td>
+</tr>
+<tr>
+<td><strong>Engagement Potential</strong></td>
+<td>4/5</td>
+<td>Podcast platform creates natural collaboration</td>
+</tr>
+<tr>
+<td><strong>Reciprocity</strong></td>
+<td>4/5</td>
+<td>Foundation can amplify his content + connect him to founders</td>
+</tr>
+<tr>
+<td><strong>Ease of Execution</strong></td>
+<td>4/5</td>
+<td>Clear angles, active online presence</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total: 26/30 — Priority Partner Candidate</strong></p>
+<hr />
+<h2>Recommended Next Steps</h2>
+<ol>
+<li><strong>Send cold email</strong> (see outreach draft)</li>
+<li><strong>Follow on LinkedIn</strong> and engage with recent posts</li>
+<li><strong>Listen to 2–3 podcast episodes</strong> to find specific hooks</li>
+<li><strong>Prepare Foundation one-pager</strong> tailored to his AI focus</li>
+<li><strong>Propose podcast collaboration</strong> as low-friction first touch</li>
+</ol>
+<hr />
+<p><em>Dossier compiled by Mozart, Foundation Partnerships Intelligence</em></p>
+  </article>
+
+  <footer class="footer">
+    Foundation Inc · partners.foundationinc.co · <a href="/">return to index</a>
+  </footer>
+
+</main>
+
+</div><!-- /#content -->
+
+<script>
+  (function () {
+    const PASSWORD_HASH = "06cb75f132725b4bb3365dbbe3bed8c53075c49f4fc4b63dc4b91acde5695d3d";
+    const STORAGE_KEY = "foundation_asset_eric-eden-dossier-2026-05-26_unlocked";
+
+    async function sha256Hex(str) {
+      const enc = new TextEncoder().encode(str);
+      const hash = await crypto.subtle.digest("SHA-256", enc);
+      return Array.from(new Uint8Array(hash))
+        .map(function (b) { return b.toString(16).padStart(2, "0"); })
+        .join("");
+    }
+
+    function showContent() {
+      document.getElementById("gate").classList.add("hidden");
+      document.getElementById("content").style.display = "block";
+    }
+
+    window.checkPassword = async function (event) {
+      event.preventDefault();
+      const input = document.getElementById("pwInput");
+      const err = document.getElementById("gateErr");
+      const attempt = input.value;
+      const hash = await sha256Hex(attempt);
+      if (hash === PASSWORD_HASH) {
+        localStorage.setItem(STORAGE_KEY, "1");
+        showContent();
+      } else {
+        err.classList.add("show");
+        input.value = "";
+      }
+    };
+
+    window.addEventListener("DOMContentLoaded", function () {
+      if (localStorage.getItem(STORAGE_KEY) === "1") showContent();
+    });
+  })();
+</script>
+
+</body>
+</html>

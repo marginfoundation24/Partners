@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="description" content="Partner discovery rehearsal — scored against IPP v1.2">
+<meta name="asset:slug" content="rehearsal-2026-05-26-3c-reddit-gtm-fractional-cmos">
+<meta name="asset:published" content="2026-05-26">
+<title>Rehearsal: 3 Fractional CMOs on Reddit GTM — Foundation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --gate-bg: #0f1318;
+    --gate-fg: #f5efe6;
+    --accent: #ff5b3a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    background: #faf7f2 !important; color: #0f1318 !important;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  /* Password gate */
+  .gate {
+    position: fixed; inset: 0;
+    background: var(--gate-bg); color: var(--gate-fg);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9999;
+  }
+  .gate.hidden { display: none; }
+  .gate-box {
+    max-width: 420px; padding: 56px 32px; text-align: center;
+  }
+  .gate-brand {
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    opacity: 0.7; margin-bottom: 28px; font-weight: 500;
+  }
+  .gate-h {
+    font-size: 28px; font-weight: 600; margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .gate-p {
+    font-size: 14px; opacity: 0.65; margin-bottom: 32px;
+  }
+  .gate-form {
+    display: flex; border: 1px solid var(--gate-fg);
+    background: transparent;
+  }
+  .gate-form input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: var(--gate-fg); padding: 14px 16px;
+    font: inherit; font-size: 15px;
+  }
+  .gate-form input::placeholder { color: rgba(245, 239, 230, 0.4); }
+  .gate-form button {
+    background: var(--accent); color: var(--gate-bg);
+    border: none; padding: 0 22px; cursor: pointer;
+    font: inherit; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    transition: opacity 0.12s;
+  }
+  .gate-form button:hover { opacity: 0.85; }
+  .gate-err {
+    color: var(--accent); font-size: 13px; margin-top: 14px;
+    display: none;
+  }
+  .gate-err.show { display: block; }
+
+  /* Page content */
+  .page { max-width: 760px; margin: 0 auto; padding: 56px 24px 96px; }
+  .header {
+    border-bottom: 1px solid rgba(15, 19, 24, 0.1);
+    padding-bottom: 24px; margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 16px;
+  }
+  h1 {
+    font-size: clamp(28px, 4vw, 40px); font-weight: 700;
+    line-height: 1.15; letter-spacing: -0.015em;
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    font-size: 17px; color: rgba(15, 19, 24, 0.65);
+    line-height: 1.4;
+  }
+  .meta {
+    font-size: 12px; color: rgba(15, 19, 24, 0.5);
+    margin-top: 18px; letter-spacing: 0.04em;
+  }
+
+  .content { font-size: 16px; line-height: 1.65; color: #0f1318 !important; }
+  .content h2 {
+    font-size: 22px; font-weight: 600; margin-top: 40px; margin-bottom: 14px;
+    letter-spacing: -0.01em; color: #0f1318 !important;
+  }
+  .content h3 {
+    font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 10px;
+    color: #ff5b3a !important;
+  }
+  .content p { margin-bottom: 14px; color: #0f1318 !important; }
+  .content ul, .content ol { padding-left: 24px; margin-bottom: 14px; }
+  .content li { margin-bottom: 6px; color: #0f1318 !important; }
+  .content strong { font-weight: 600; }
+  .content a {
+    color: #ff5b3a !important; text-decoration: underline;
+    text-decoration-thickness: 1px; text-underline-offset: 3px;
+  }
+  .content blockquote {
+    border-left: 2px solid var(--accent);
+    padding-left: 16px; margin: 18px 0;
+    color: rgba(15, 19, 24, 0.75); font-style: italic;
+  }
+  .content code {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    background: rgba(15, 19, 24, 0.06); padding: 2px 6px;
+    border-radius: 3px; font-size: 0.88em;
+  }
+  .content pre {
+    background: var(--gate-bg); color: var(--gate-fg);
+    padding: 16px; margin: 16px 0; overflow-x: auto;
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px;
+    line-height: 1.5;
+  }
+  .content pre code { background: none; padding: 0; color: inherit; }
+  .content table {
+    width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px;
+  }
+  .content th, .content td {
+    padding: 10px 12px; text-align: left;
+    border-bottom: 1px solid rgba(15, 19, 24, 0.1);
+    color: #0f1318 !important;
+  }
+  .content th { font-weight: 600; }
+  .content hr {
+    border: none; border-top: 1px solid rgba(15, 19, 24, 0.1);
+    margin: 32px 0;
+  }
+
+  .footer {
+    margin-top: 64px; padding-top: 24px;
+    border-top: 1px solid rgba(15, 19, 24, 0.1);
+    font-size: 12px; color: rgba(15, 19, 24, 0.5);
+    letter-spacing: 0.04em;
+  }
+  .footer a { color: inherit; }
+</style>
+</head>
+<body>
+
+<!-- password gate -->
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <div class="gate-brand">Foundation × Partners</div>
+    <div class="gate-h">Private access</div>
+    <p class="gate-p">Enter password to view this asset.</p>
+    <form class="gate-form" onsubmit="checkPassword(event)">
+      <input type="password" id="pwInput" placeholder="password" autofocus autocomplete="off">
+      <button type="submit">Enter</button>
+    </form>
+    <div class="gate-err" id="gateErr">Wrong password.</div>
+  </div>
+</div>
+
+<div id="content" class="hidden" style="display: none;">
+
+<main class="page">
+
+  <header class="header">
+    <div class="eyebrow">Foundation × Partners</div>
+    <h1>Rehearsal: 3 Fractional CMOs on Reddit GTM</h1>
+    <p class="subtitle">Partner discovery rehearsal — scored against IPP v1.2</p>
+    <div class="meta">Published 2026-05-26 · prepared by Mozart for the Foundation team</div>
+  </header>
+
+  <article class="content">
+<h2>rehearsal overview</h2>
+<p><strong>topic:</strong> fractional CMOs writing about Reddit GTM<br />
+<strong>candidates:</strong> 3<br />
+<strong>scoring rubric:</strong> IPP v1.2<br />
+<strong>run date:</strong> 2026-05-26<br />
+<strong>prepared by:</strong> Mozart</p>
+<hr />
+<h2>candidate 1: Eric Eden</h2>
+<p><strong>tier:</strong> A (75/100)</p>
+<table>
+<thead>
+<tr>
+<th>lens</th>
+<th>score</th>
+<th>rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIT</td>
+<td>23/25</td>
+<td>Fractional CMO &amp; Board-Level Advisor for AI/SaaS. Direct tier-1 title match.</td>
+</tr>
+<tr>
+<td>PORTFOLIO</td>
+<td>14/20</td>
+<td>AI/SaaS, VC/PE portfolio companies. B2B SaaS overlap but skews earlier stage than Foundation's $50M+ ICP.</td>
+</tr>
+<tr>
+<td>NETWORK</td>
+<td>3/10</td>
+<td>No warm intro path via Ross identified yet.</td>
+</tr>
+<tr>
+<td>AUDIENCE</td>
+<td>14/20</td>
+<td>Hosts Remarkable Marketing Podcast, runs chargeforward.io with playbooks/tools, strong LinkedIn presence.</td>
+</tr>
+<tr>
+<td>INTENT</td>
+<td>18/20</td>
+<td>Explicitly calls Reddit "the best marketing channel in 2026." Has a Reddit case study with real results. Strongest Reddit signal of the three.</td>
+</tr>
+<tr>
+<td>TIMING</td>
+<td>3/5</td>
+<td>Currently advising AI/SaaS teams, open to fractional CMO/board advisory. No explicit recent role change.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>contact intelligence</strong></p>
+<table>
+<thead>
+<tr>
+<th>platform</th>
+<th>link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LinkedIn</td>
+<td>https://www.linkedin.com/in/ericeden1/</td>
+</tr>
+<tr>
+<td>Website</td>
+<td>https://eric-eden.com/</td>
+</tr>
+<tr>
+<td>Podcast</td>
+<td>Remarkable Marketing Podcast</td>
+</tr>
+<tr>
+<td>Tools/Playbooks</td>
+<td>https://chargeforward.io/</td>
+</tr>
+</tbody>
+</table>
+<p><strong>recent signal (last 90 days)</strong>
+- Posted that Reddit is "the best marketing channel in 2026"
+- Built 70K+ member Reddit communities
+- Top 1% Reddit user, 25.5M content reads
+- Presenting Reddit case studies at marketing events</p>
+<p><strong>partnership angle</strong>
+Eric is already sold on Reddit as a primary channel. He's advising AI/SaaS companies that need execution help. Foundation's Reddit marketing services + his advisory layer = natural referral flow.</p>
+<p><strong>first-touch email</strong></p>
+<blockquote>
+<p>Hi Eric,
+Saw your post calling Reddit the best marketing channel in 2026. We're building a partner program at Foundation around exactly that thesis, working with fractional CMOs who see Reddit as a real GTM lever for B2B SaaS.
+Worth a quick chat?
+Cheers, David</p>
+</blockquote>
+<hr />
+<h2>candidate 2: Kas Szatylowicz</h2>
+<p><strong>tier:</strong> B (65/100)</p>
+<table>
+<thead>
+<tr>
+<th>lens</th>
+<th>score</th>
+<th>rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIT</td>
+<td>22/25</td>
+<td>Fractional Head of Marketing</td>
+</tr>
+<tr>
+<td>PORTFOLIO</td>
+<td>13/20</td>
+<td>Pre-Seed, Seed, Series A B2B SaaS. Current: Lightly (Seed). Past: Lakera (AI security, 33 Fortune 100 inbound), V7, Tidio. Earlier stage than ideal but strong B2B SaaS signal.</td>
+</tr>
+<tr>
+<td>NETWORK</td>
+<td>2/10</td>
+<td>No warm intro path via Ross identified yet.</td>
+</tr>
+<tr>
+<td>AUDIENCE</td>
+<td>11/20</td>
+<td>13,970 LinkedIn followers, 918 posts, podcast guest (Messy Growth), Reforge '22. Moderate creator velocity.</td>
+</tr>
+<tr>
+<td>INTENT</td>
+<td>13/20</td>
+<td>Wrote about Reddit's "brilliant Trojan horse marketing play" on LinkedIn. Lists Reddit as a performance marketing platform she works with. Moderate Reddit signal.</td>
+</tr>
+<tr>
+<td>TIMING</td>
+<td>4/5</td>
+<td>Left Lakera in late 2024, transitioned to fractional work in early 2025, currently at Lightly. Recent role change to fractional.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>contact intelligence</strong></p>
+<table>
+<thead>
+<tr>
+<th>platform</th>
+<th>link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LinkedIn</td>
+<td>https://www.linkedin.com/in/kszatylowicz/</td>
+</tr>
+<tr>
+<td>Website</td>
+<td>https://work-with-kas.com/</td>
+</tr>
+<tr>
+<td>Email</td>
+<td>hello@work-with-kas.com</td>
+</tr>
+</tbody>
+</table>
+<p><strong>recent signal (last 90 days)</strong>
+- March 2025 LinkedIn post: "Reddit, Inc. is currently running a brilliant Trojan horse marketing play... I’m actually taking them up on the offer."
+- Notes Reddit threads consistently land in top 3 search results
+- Exploring Reddit for B2B advertising
+- Currently doing outbound tool research (Attio, Dripify, Sales Nav)</p>
+<p><strong>partnership angle</strong>
+Kas is actively exploring Reddit as a B2B advertising channel. She's in the "learning" phase on Reddit, which means Foundation can position as the execution partner that helps her deliver Reddit results to her fractional clients.</p>
+<p><strong>first-touch email</strong></p>
+<blockquote>
+<p>Hi Kas,
+Saw your LinkedIn post on Reddit's Trojan horse play. Smart read. I'm building Foundation's partner program for fractional marketing leaders who get Reddit as a B2B channel, and your take on visibility + ad dollars landing there resonated.
+Worth a quick chat?
+Cheers, David</p>
+</blockquote>
+<hr />
+<h2>candidate 3: Oleg Kovalev</h2>
+<p><strong>tier:</strong> B (60/100)</p>
+<table>
+<thead>
+<tr>
+<th>lens</th>
+<th>score</th>
+<th>rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIT</td>
+<td>22/25</td>
+<td>Founder &amp; Partner at ASP Marketing, fractional CMO for B2B SaaS. Tier-1 title match.</td>
+</tr>
+<tr>
+<td>PORTFOLIO</td>
+<td>12/20</td>
+<td>B2B SaaS $500K-$15M ARR, 24 active engagements. Aspect Health (Sequoia/a16z), AdSkill, Skipp, WeLoveNoCode (acquired by Toptal). Mix of B2B SaaS and some B2C. Earlier stage than Foundation's $50M+ ICP.</td>
+</tr>
+<tr>
+<td>NETWORK</td>
+<td>2/10</td>
+<td>No warm intro path via Ross identified yet.</td>
+</tr>
+<tr>
+<td>AUDIENCE</td>
+<td>10/20</td>
+<td>ASP Marketing blog, Authority Magazine features, podcast appearances, Techstars mentor, VivaTech speaker. No owned newsletter or podcast found.</td>
+</tr>
+<tr>
+<td>INTENT</td>
+<td>12/20</td>
+<td>Wrote about Reddit in LLM Optimization article (Reddit cited in 28-35% of LLM answers) and SaaS content marketing strategy. Moderate Reddit signal, framed through GEO/AI-search lens.</td>
+</tr>
+<tr>
+<td>TIMING</td>
+<td>2/5</td>
+<td>Currently running ASP Marketing, actively publishing in 2026. No recent role change.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>contact intelligence</strong></p>
+<table>
+<thead>
+<tr>
+<th>platform</th>
+<th>link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LinkedIn</td>
+<td>https://www.linkedin.com/in/olegkovalev/</td>
+</tr>
+<tr>
+<td>Website</td>
+<td>https://asp-marketing.com/</td>
+</tr>
+<tr>
+<td>Blog</td>
+<td>https://asp-marketing.com/blog/</td>
+</tr>
+</tbody>
+</table>
+<p><strong>recent signal (last 90 days)</strong>
+- Published "LLM Optimization (LLMO): How to Get Your Brand Cited by AI" — cites Reddit as appearing in 28-35% of LLM answer citations
+- Published "SaaS Content Marketing Strategy" — mentions Reddit as a real organic surface
+- Published "Demand Generation vs Lead Generation" — strong demand gen positioning
+- 24 active B2B SaaS engagements as of mid-2026</p>
+<p><strong>partnership angle</strong>
+Oleg's GEO/LLMO angle is a natural complement to Foundation's Reddit + GEO services. His clients need Reddit execution; Foundation needs fractional CMOs who understand AI-search visibility. The LLM citation data he surfaced is a strong pitch asset.</p>
+<p><strong>first-touch email</strong></p>
+<blockquote>
+<p>Hi Oleg,
+Read your LLM optimization piece. The Reddit citation data (28-35% of LLM answers) is a strong signal most marketers are missing. At Foundation we're building a partner program around Reddit + GEO for B2B SaaS, and your angle on organic surfaces aligns.
+Worth a quick chat?
+Cheers, David</p>
+</blockquote>
+<hr />
+<h2>summary</h2>
+<table>
+<thead>
+<tr>
+<th>candidate</th>
+<th>tier</th>
+<th>score</th>
+<th>strongest signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eric Eden</td>
+<td>A</td>
+<td>75</td>
+<td>Explicit Reddit evangelist, case study with real results</td>
+</tr>
+<tr>
+<td>Kas Szatylowicz</td>
+<td>B</td>
+<td>65</td>
+<td>Active Reddit learner, fractional head of marketing</td>
+</tr>
+<tr>
+<td>Oleg Kovalev</td>
+<td>B</td>
+<td>60</td>
+<td>GEO/LLMO + Reddit data, 24 active SaaS engagements</td>
+</tr>
+</tbody>
+</table>
+<p><strong>next step:</strong> David reviews, gives yes/no/maybe + why. Mozart tightens rubric or prompts, runs again.</p>
+  </article>
+
+  <footer class="footer">
+    Foundation Inc · partners.foundationinc.co · <a href="/">return to index</a>
+  </footer>
+
+</main>
+
+</div><!-- /#content -->
+
+<script>
+  (function () {
+    const PASSWORD_HASH = "06cb75f132725b4bb3365dbbe3bed8c53075c49f4fc4b63dc4b91acde5695d3d";
+    const STORAGE_KEY = "foundation_asset_rehearsal-2026-05-26-3c-reddit-gtm-fractional-cmos_unlocked";
+
+    async function sha256Hex(str) {
+      const enc = new TextEncoder().encode(str);
+      const hash = await crypto.subtle.digest("SHA-256", enc);
+      return Array.from(new Uint8Array(hash))
+        .map(function (b) { return b.toString(16).padStart(2, "0"); })
+        .join("");
+    }
+
+    function showContent() {
+      document.getElementById("gate").classList.add("hidden");
+      document.getElementById("content").style.display = "block";
+    }
+
+    window.checkPassword = async function (event) {
+      event.preventDefault();
+      const input = document.getElementById("pwInput");
+      const err = document.getElementById("gateErr");
+      const attempt = input.value;
+      const hash = await sha256Hex(attempt);
+      if (hash === PASSWORD_HASH) {
+        localStorage.setItem(STORAGE_KEY, "1");
+        showContent();
+      } else {
+        err.classList.add("show");
+        input.value = "";
+      }
+    };
+
+    window.addEventListener("DOMContentLoaded", function () {
+      if (localStorage.getItem(STORAGE_KEY) === "1") showContent();
+    });
+  })();
+</script>
+
+</body>
+</html>

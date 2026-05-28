@@ -153,6 +153,48 @@
     letter-spacing: 0.04em;
   }
   .footer a { color: inherit; }
+
+  .toggle-btn {
+    background: var(--gate-bg);
+    color: var(--gate-fg);
+    border: none;
+    padding: 10px 16px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+  }
+  .toggle-btn:hover { opacity: 0.85; }
+  .toggle-content {
+    display: none;
+    background: rgba(15, 19, 24, 0.04);
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .toggle-content.show { display: block; }
+  .email-block { margin-bottom: 18px; }
+  .email-block:last-child { margin-bottom: 0; }
+  .email-subject {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ff5b3a !important;
+    margin-bottom: 6px;
+  }
+  .email-body {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    color: #0f1318 !important;
+  }
+
 </style>
 </head>
 <body>
@@ -241,6 +283,26 @@
 <h2>Outreach Notes</h2>
 <p>Contact created May 25, 2026. Deal created in Partnerships Pipeline on May 28, 2026 in Sourced stage. No prior engagement history. Recommend outreach referencing her dual role at Riverside + PinchHitCMO and exploring how Foundation could support her fractional practice or portfolio companies.</p>
 
+<h2>Email Outreach Sequence</h2><button id="julie-seq-btn" class="toggle-btn" onclick="toggleSequence('julie-seq')">Show email sequence ↓</button><div id="julie-seq" class="toggle-content"><div class="email-block"><div class="email-subject">Email 1 — Subject: pinchhitcmo + riverside</div><div class="email-body">Hi Julie,
+
+You've been running PinchHitCMO since 2016 alongside your PE role at Riverside. That's a unique setup, bridging portfolio companies and fractional leadership.
+
+I'm David at Foundation. We partner with senior marketing leaders who work across multiple growth'stage companies and share deal flow plus upside.
+
+Worth a quick chat?
+
+Cheers, David</div></div><div class="email-block"><div class="email-subject">Email 2 — Subject: quick follow up</div><div class="email-body">Hi Julie,
+
+Reaching back out. Our model is built for fractional CMOs like yourself who advise multiple companies. We share wins and provide partner infrastructure.
+
+Still worth a brief look?
+
+Cheers, David</div></div><div class="email-block"><div class="email-subject">Email 3 — Subject: last touch</div><div class="email-body">Hi Julie,
+
+No worries if this isn't the right time. I'll circle back in a few months.
+
+Cheers, David</div></div></div>
+
   </article>
 
   <footer class="footer">
@@ -252,6 +314,17 @@
 </div><!-- /#content -->
 
 <script>
+  function toggleSequence(id) {
+    const el = document.getElementById(id);
+    const btn = document.getElementById(id + '-btn');
+    if (el.classList.contains('show')) {
+      el.classList.remove('show');
+      btn.textContent = btn.textContent.replace('Hide', 'Show').replace('↑', '↓');
+    } else {
+      el.classList.add('show');
+      btn.textContent = btn.textContent.replace('Show', 'Hide').replace('↓', '↑');
+    }
+  }
   (function () {
     const PASSWORD_HASH = "06cb75f132725b4bb3365dbbe3bed8c53075c49f4fc4b63dc4b91acde5695d3d";
     const STORAGE_KEY = "foundation_asset_julie-zadow-dossier-2026-05-28_unlocked";

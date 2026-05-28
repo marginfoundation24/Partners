@@ -153,6 +153,90 @@
     letter-spacing: 0.04em;
   }
   .footer a { color: inherit; }
+
+  /* Toggle for email sequence */
+  .toggle-btn {
+    background: var(--gate-bg);
+    color: var(--gate-fg);
+    border: none;
+    padding: 10px 16px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+  }
+  .toggle-btn:hover { opacity: 0.85; }
+  .toggle-content {
+    display: none;
+    background: rgba(15, 19, 24, 0.04);
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .toggle-content.show { display: block; }
+  .email-block { margin-bottom: 18px; }
+  .email-block:last-child { margin-bottom: 0; }
+  .email-subject {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ff5b3a !important;
+    margin-bottom: 6px;
+  }
+  .email-body {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    color: #0f1318 !important;
+  }
+
+  .toggle-btn {
+    background: var(--gate-bg);
+    color: var(--gate-fg);
+    border: none;
+    padding: 10px 16px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+  }
+  .toggle-btn:hover { opacity: 0.85; }
+  .toggle-content {
+    display: none;
+    background: rgba(15, 19, 24, 0.04);
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .toggle-content.show { display: block; }
+  .email-block { margin-bottom: 18px; }
+  .email-block:last-child { margin-bottom: 0; }
+  .email-subject {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ff5b3a !important;
+    margin-bottom: 6px;
+  }
+  .email-body {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    color: #0f1318 !important;
+  }
+
 </style>
 </head>
 <body>
@@ -160,7 +244,7 @@
 <!-- password gate -->
 <div class="gate" id="gate">
   <div class="gate-box">
-    <div class="gate-brand">Foundation × Partners</div>
+    <div class="gate-brand">Foundation &times; Partners</div>
     <div class="gate-h">Private access</div>
     <p class="gate-p">Enter password to view this asset.</p>
     <form class="gate-form" onsubmit="checkPassword(event)">
@@ -176,10 +260,10 @@
 <main class="page">
 
   <header class="header">
-    <div class="eyebrow">Foundation × Partners</div>
+    <div class="eyebrow">Foundation &times; Partners</div>
     <h1>Tami Cannizzaro — Partner Dossier</h1>
-    <p class="subtitle">Tier A fractional CMO candidate · IPP score 85/100</p>
-    <div class="meta">Published 2026-05-28 · prepared by Mozart for the Foundation team</div>
+    <p class="subtitle">Tier A fractional CMO candidate &middot; IPP score 85/100</p>
+    <div class="meta">Published 2026-05-28 &middot; prepared by Mozart for the Foundation team</div>
   </header>
 
   <article class="content">
@@ -188,7 +272,7 @@
 <table>
   <tr><th>Field</th><th>Detail</th></tr>
   <tr><td>Name</td><td>Tami Cannizzaro</td></tr>
-  <tr><td>Title</td><td>Global CMO | Transforming Tech Companies | Building Brands & Accelerating SaaS Revenue | AI Proficient</td></tr>
+  <tr><td>Title</td><td>Global CMO | Transforming Tech Companies | Building Brands &amp; Accelerating SaaS Revenue | AI Proficient</td></tr>
   <tr><td>Company</td><td>THRYV (former) / Fractional CMO (current)</td></tr>
   <tr><td>Location</td><td>New York City, NY, United States</td></tr>
   <tr><td>Email</td><td>tami.cannizzaro@thryv.com</td></tr>
@@ -215,7 +299,7 @@
 <h2>Operating History</h2>
 <table>
   <tr><th>Role</th><th>Company</th><th>Tenure</th></tr>
-  <tr><td>Fractional CMO & GTM Advisor</td><td>Fractional CMO</td><td>Mar 2026 - Present</td></tr>
+  <tr><td>Fractional CMO &amp; GTM Advisor</td><td>Fractional CMO</td><td>Mar 2026 - Present</td></tr>
   <tr><td>Chief Marketing Officer</td><td>Thryv</td><td>Apr 2022 - Mar 2026</td></tr>
   <tr><td>VP Growth Marketing</td><td>Forcepoint</td><td>Jan 2020 - Apr 2022</td></tr>
   <tr><td>Chief Marketing Officer</td><td>Comodo</td><td>Nov 2018 - Jan 2020</td></tr>
@@ -229,7 +313,7 @@
 <h2>IPP Score</h2>
 <table>
   <tr><th>Lens</th><th>Score</th><th>Rationale</th></tr>
-  <tr><td>Fit</td><td>25/25</td><td>"Global CMO" and "Fractional CMO & GTM Advisor" in headline. Direct match.</td></tr>
+  <tr><td>Fit</td><td>25/25</td><td>"Global CMO" and "Fractional CMO &amp; GTM Advisor" in headline. Direct match.</td></tr>
   <tr><td>Portfolio</td><td>20/20</td><td>Massive brand names (Thryv, Forcepoint, Comodo, CA, Oracle, eBay, IBM) with quantified revenue results.</td></tr>
   <tr><td>Network</td><td>0/10</td><td>No Ross connection identified.</td></tr>
   <tr><td>Audience</td><td>15/20</td><td>15,198 followers, LinkedIn creator. Strong presence in B2B SaaS marketing.</td></tr>
@@ -250,10 +334,45 @@
 <h2>Outreach Notes</h2>
 <p>Pre-existing contact in HubSpot since September 2025. Deal created in Partnerships Pipeline on May 28, 2026. No prior dossier or engagement notes attached to deal. Recommend personalized outreach referencing her recent fractional CMO transition and AI proficiency.</p>
 
+<h2>Email Outreach Sequence</h2>
+<button id="tami-seq-btn" class="toggle-btn" onclick="toggleSequence('tami-seq')">Show email sequence &darr;</button>
+<div id="tami-seq" class="toggle-content">
+<div class="email-block">
+<div class="email-subject">Email 1 (cold outreach) — Subject: your fractional shift</div>
+<div class="email-body">Hi Tami,
+
+Saw you just went fractional in March after 14 straight quarters of earnings beats at Thryv. That track record is rare.
+
+I'm David at Foundation. We work with former CMOs like you who are now advising growth-stage companies, and we have a partner model that pays for referrals and wins.
+
+Worth a quick conversation?
+
+Cheers, David</div>
+</div>
+<div class="email-block">
+<div class="email-subject">Email 2 (follow-up) — Subject: quick note</div>
+<div class="email-body">Hi Tami,
+
+Reaching back out. Our partners are typically former CMOs running fractional practices and we share deal flow and upside with them.
+
+Any interest in hearing how it works?
+
+Cheers, David</div>
+</div>
+<div class="email-block">
+<div class="email-subject">Email 3 (final touch) — Subject: passing this by</div>
+<div class="email-body">Hi Tami,
+
+No pressure if timing is off. Happy to reconnect down the road.
+
+Cheers, David</div>
+</div>
+</div>
+
   </article>
 
   <footer class="footer">
-    Foundation Inc · partners.foundationinc.co · <a href="/">return to index</a>
+    Foundation Inc &middot; partners.foundationinc.co &middot; <a href="/">return to index</a>
   </footer>
 
 </main>
@@ -261,6 +380,17 @@
 </div><!-- /#content -->
 
 <script>
+  function toggleSequence(id) {
+    const el = document.getElementById(id);
+    const btn = document.getElementById(id + '-btn');
+    if (el.classList.contains('show')) {
+      el.classList.remove('show');
+      btn.textContent = btn.textContent.replace('Hide', 'Show').replace('↑', '↓');
+    } else {
+      el.classList.add('show');
+      btn.textContent = btn.textContent.replace('Show', 'Hide').replace('↓', '↑');
+    }
+  }
   (function () {
     const PASSWORD_HASH = "06cb75f132725b4bb3365dbbe3bed8c53075c49f4fc4b63dc4b91acde5695d3d";
     const STORAGE_KEY = "foundation_asset_tami-cannizzaro-dossier-2026-05-28_unlocked";
@@ -296,6 +426,18 @@
     window.addEventListener("DOMContentLoaded", function () {
       if (localStorage.getItem(STORAGE_KEY) === "1") showContent();
     });
+
+    window.toggleSequence = function (id) {
+      const el = document.getElementById(id);
+      const btn = document.getElementById(id + '-btn');
+      if (el.classList.contains('show')) {
+        el.classList.remove('show');
+        btn.textContent = 'Show email sequence ↓';
+      } else {
+        el.classList.add('show');
+        btn.textContent = 'Hide email sequence ↑';
+      }
+    };
   })();
 </script>
 

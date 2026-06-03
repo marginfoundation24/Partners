@@ -1,5 +1,12 @@
 [
   {
+    "slug": "eli-schwartz",
+    "name": "Eli Schwartz",
+    "website": "https://www.linkedin.com/in/schwartze/",
+    "headline": "Most Brands Create Content. The Best Ones Make Sure It Gets Found.",
+    "published_at": "2026-06-03T10:49:07Z"
+  },
+  {
     "slug": "kevin-indig",
     "name": "Kevin Indig",
     "website": "https://www.kevin-indig.com",
@@ -8,15 +15,5 @@
     "published_at": "2026-05-22T09:23:36Z",
     "updated_at": "2026-05-22T09:23:36Z",
     "url": "https://partners.foundationinc.co/kevin-indig"
-  },
-  {
-    "slug": "eli-schwartz",
-    "name": "Eli Schwartz",
-    "website": "https://www.elischwartz.co/",
-    "headline": "Two Firms. One Search Playbook.",
-    "subtitle": "Eli Schwartz knows SEO that compounds. Foundation knows content that ranks. Together, we build organic engines for B2B brands. At scale.",
-    "published_at": "2026-05-15T22:30:00Z",
-    "updated_at": "2026-05-15T22:30:00Z",
-    "url": "https://partners.foundationinc.co/eli-schwartz"
   }
 ]

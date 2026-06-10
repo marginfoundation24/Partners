@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<meta name="googlebot" content="noindex, nofollow">
-<meta name="description" content="IPP score 37/100 · Tier C (watchlist) · Partnerships operator, not current ICP">
+<meta name="description" content="IPP score 37/100 · Tier C (watchlist)">
 <meta name="asset:slug" content="tyler-gillespie-dossier-2026-06-10">
 <meta name="asset:published" content="2026-06-10">
 <title>Partner Dossier: Tyler Gillespie — Foundation</title>
@@ -15,149 +14,54 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
 <style>
-  :root {
-    --gate-bg: #0f1318;
-    --gate-fg: #f5efe6;
-    --accent: #ff5b3a;
-  }
+  :root { --gate-bg: #0f1318; --gate-fg: #f5efe6; --accent: #ff5b3a; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
-    background: #faf7f2 !important; color: #0f1318 !important;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.5;
-  }
+  html, body { font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif; background: #faf7f2 !important; color: #0f1318 !important; -webkit-font-smoothing: antialiased; line-height: 1.5; }
 
-  /* Password gate */
-  .gate {
-    position: fixed; inset: 0;
-    background: var(--gate-bg); color: var(--gate-fg);
-    display: flex; align-items: center; justify-content: center;
-    z-index: 9999;
-  }
+  .gate { position: fixed; inset: 0; background: var(--gate-bg); color: var(--gate-fg); display: flex; align-items: center; justify-content: center; z-index: 9999; }
   .gate.hidden { display: none; }
-  .gate-box {
-    max-width: 420px; padding: 56px 32px; text-align: center;
-  }
-  .gate-brand {
-    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
-    opacity: 0.7; margin-bottom: 28px; font-weight: 500;
-  }
-  .gate-h {
-    font-size: 28px; font-weight: 600; margin-bottom: 10px;
-    letter-spacing: -0.01em;
-  }
-  .gate-p {
-    font-size: 14px; opacity: 0.65; margin-bottom: 32px;
-  }
-  .gate-form {
-    display: flex; border: 1px solid var(--gate-fg);
-    background: transparent;
-  }
-  .gate-form input {
-    flex: 1; background: transparent; border: none; outline: none;
-    color: var(--gate-fg); padding: 14px 16px;
-    font: inherit; font-size: 15px;
-  }
+  .gate-box { max-width: 420px; padding: 56px 32px; text-align: center; }
+  .gate-brand { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; margin-bottom: 28px; font-weight: 500; }
+  .gate-h { font-size: 28px; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.01em; }
+  .gate-p { font-size: 14px; opacity: 0.65; margin-bottom: 32px; }
+  .gate-form { display: flex; border: 1px solid var(--gate-fg); background: transparent; }
+  .gate-form input { flex: 1; background: transparent; border: none; outline: none; color: var(--gate-fg); padding: 14px 16px; font: inherit; font-size: 15px; }
   .gate-form input::placeholder { color: rgba(245, 239, 230, 0.4); }
-  .gate-form button {
-    background: var(--accent); color: var(--gate-bg);
-    border: none; padding: 0 22px; cursor: pointer;
-    font: inherit; font-size: 12px; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    transition: opacity 0.12s;
-  }
+  .gate-form button { background: var(--accent); color: var(--gate-bg); border: none; padding: 0 22px; cursor: pointer; font: inherit; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; transition: opacity 0.12s; }
   .gate-form button:hover { opacity: 0.85; }
-  .gate-err {
-    color: var(--accent); font-size: 13px; margin-top: 14px;
-    display: none;
-  }
+  .gate-err { color: var(--accent); font-size: 13px; margin-top: 14px; display: none; }
   .gate-err.show { display: block; }
 
-  /* Page content */
   .page { max-width: 760px; margin: 0 auto; padding: 56px 24px 96px; }
-  .header {
-    border-bottom: 1px solid rgba(15, 19, 24, 0.1);
-    padding-bottom: 24px; margin-bottom: 40px;
-  }
-  .eyebrow {
-    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--accent); font-weight: 600; margin-bottom: 16px;
-  }
-  h1 {
-    font-size: clamp(28px, 4vw, 40px); font-weight: 700;
-    line-height: 1.15; letter-spacing: -0.015em;
-    margin-bottom: 12px;
-  }
-  .subtitle {
-    font-size: 17px; color: rgba(15, 19, 24, 0.65);
-    line-height: 1.4;
-  }
-  .meta {
-    font-size: 12px; color: rgba(15, 19, 24, 0.5);
-    margin-top: 18px; letter-spacing: 0.04em;
-  }
+  .header { border-bottom: 1px solid rgba(15, 19, 24, 0.1); padding-bottom: 24px; margin-bottom: 40px; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 16px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 12px; }
+  .subtitle { font-size: 17px; color: rgba(15, 19, 24, 0.65); line-height: 1.4; }
+  .meta { font-size: 12px; color: rgba(15, 19, 24, 0.5); margin-top: 18px; letter-spacing: 0.04em; }
 
   .content { font-size: 16px; line-height: 1.65; color: #0f1318 !important; }
-  .content h2 {
-    font-size: 22px; font-weight: 600; margin-top: 40px; margin-bottom: 14px;
-    letter-spacing: -0.01em; color: #0f1318 !important;
-  }
-  .content h3 {
-    font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 10px;
-    color: #ff5b3a !important;
-  }
+  .content h2 { font-size: 22px; font-weight: 600; margin-top: 40px; margin-bottom: 14px; letter-spacing: -0.01em; color: #0f1318 !important; }
+  .content h3 { font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 10px; color: #ff5b3a !important; }
   .content p { margin-bottom: 14px; color: #0f1318 !important; }
   .content ul, .content ol { padding-left: 24px; margin-bottom: 14px; }
   .content li { margin-bottom: 6px; color: #0f1318 !important; }
   .content strong { font-weight: 600; }
-  .content a {
-    color: #ff5b3a !important; text-decoration: underline;
-    text-decoration-thickness: 1px; text-underline-offset: 3px;
-  }
-  .content blockquote {
-    border-left: 2px solid var(--accent);
-    padding-left: 16px; margin: 18px 0;
-    color: rgba(15, 19, 24, 0.75); font-style: italic;
-  }
-  .content code {
-    font-family: "IBM Plex Mono", ui-monospace, monospace;
-    background: rgba(15, 19, 24, 0.06); padding: 2px 6px;
-    border-radius: 3px; font-size: 0.88em;
-  }
-  .content pre {
-    background: var(--gate-bg); color: var(--gate-fg);
-    padding: 16px; margin: 16px 0; overflow-x: auto;
-    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px;
-    line-height: 1.5;
-  }
+  .content a { color: #ff5b3a !important; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .content blockquote { border-left: 2px solid var(--accent); padding-left: 16px; margin: 18px 0; color: rgba(15, 19, 24, 0.75); font-style: italic; }
+  .content code { font-family: "IBM Plex Mono", ui-monospace, monospace; background: rgba(15, 19, 24, 0.06); padding: 2px 6px; border-radius: 3px; font-size: 0.88em; }
+  .content pre { background: var(--gate-bg); color: var(--gate-fg); padding: 16px; margin: 16px 0; overflow-x: auto; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; line-height: 1.5; }
   .content pre code { background: none; padding: 0; color: inherit; }
-  .content table {
-    width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px;
-  }
-  .content th, .content td {
-    padding: 10px 12px; text-align: left;
-    border-bottom: 1px solid rgba(15, 19, 24, 0.1);
-    color: #0f1318 !important;
-  }
+  .content table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  .content th, .content td { padding: 10px 12px; text-align: left; border-bottom: 1px solid rgba(15, 19, 24, 0.1); color: #0f1318 !important; }
   .content th { font-weight: 600; }
-  .content hr {
-    border: none; border-top: 1px solid rgba(15, 19, 24, 0.1);
-    margin: 32px 0;
-  }
+  .content hr { border: none; border-top: 1px solid rgba(15, 19, 24, 0.1); margin: 32px 0; }
 
-  .footer {
-    margin-top: 64px; padding-top: 24px;
-    border-top: 1px solid rgba(15, 19, 24, 0.1);
-    font-size: 12px; color: rgba(15, 19, 24, 0.5);
-    letter-spacing: 0.04em;
-  }
+  .footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(15, 19, 24, 0.1); font-size: 12px; color: rgba(15, 19, 24, 0.5); letter-spacing: 0.04em; }
   .footer a { color: inherit; }
 </style>
 </head>
 <body>
 
-<!-- password gate -->
 <div class="gate" id="gate">
   <div class="gate-box">
     <div class="gate-brand">Foundation × Partners</div>
@@ -171,17 +75,14 @@
   </div>
 </div>
 
-<div id="content" class="hidden" style="display: none;">
-
+<div id="content" style="display: none;">
 <main class="page">
-
   <header class="header">
     <div class="eyebrow">Foundation × Partners</div>
     <h1>Partner Dossier: Tyler Gillespie</h1>
     <p class="subtitle">IPP score 37/100 · Tier C (watchlist) · Partnerships operator, not current ICP</p>
     <div class="meta">Published 2026-06-10 · prepared by Mozart for the Foundation team</div>
   </header>
-
   <article class="content">
 <h2>Partner Assessment</h2>
 <p><strong>Tyler Gillespie</strong></p>
@@ -278,39 +179,30 @@ Cheers, David
 <h3>Why this grade</h3>
 <p>Tyler is a strong operator but outside Foundation's current advisor and consultant ICP. His partnerships expertise is real, but the overlap with Foundation's client base (B2B SaaS brands investing in SEO, YouTube, and Reddit GTM) is minimal. Worth keeping on the watchlist if Foundation ever adds partner program advisory to its service mix.</p>
   </article>
-
   <footer class="footer">
     Foundation Inc · partners.foundationinc.co · <a href="/">return to index</a>
   </footer>
-
 </main>
-
-</div><!-- /#content -->
+</div>
 
 <script>
   (function () {
-    const PASSWORD_HASH = "{{PASSWORD_HASH}}";
+    const PASSWORD_HASH="06cb75f132725b4bb3365dbbe3bed8c53075c49f4fc4b63dc4b91acde5695d3d";
     const STORAGE_KEY = "foundation_asset_tyler-gillespie-dossier-2026-06-10_unlocked";
-
     async function sha256Hex(str) {
       const enc = new TextEncoder().encode(str);
       const hash = await crypto.subtle.digest("SHA-256", enc);
-      return Array.from(new Uint8Array(hash))
-        .map(function (b) { return b.toString(16).padStart(2, "0"); })
-        .join("");
+      return Array.from(new Uint8Array(hash)).map(function (b) { return b.toString(16).padStart(2, "0"); }).join("");
     }
-
     function showContent() {
       document.getElementById("gate").classList.add("hidden");
       document.getElementById("content").style.display = "block";
     }
-
     window.checkPassword = async function (event) {
       event.preventDefault();
       const input = document.getElementById("pwInput");
       const err = document.getElementById("gateErr");
-      const attempt = input.value;
-      const hash = await sha256Hex(attempt);
+      const hash = await sha256Hex(input.value);
       if (hash === PASSWORD_HASH) {
         localStorage.setItem(STORAGE_KEY, "1");
         showContent();
@@ -319,7 +211,6 @@ Cheers, David
         input.value = "";
       }
     };
-
     window.addEventListener("DOMContentLoaded", function () {
       if (localStorage.getItem(STORAGE_KEY) === "1") showContent();
     });

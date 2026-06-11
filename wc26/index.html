@@ -150,7 +150,7 @@ footer{margin-top:34px;font-size:11px;color:#4d5f53;line-height:1.6}
       <tr><td class="rp plus">+12</td><td>Win after trailing by 2 goals</td></tr>
       <tr><td class="rp plus">+6</td><td>Win a penalty shootout</td></tr>
       <tr><td class="rp plus">+8</td><td>Score 5+ goals in one game</td></tr>
-      <tr><td class="rp minus">−3</td><td>Yellow card (yes, every single one)</td></tr>
+      <tr><td class="rp minus">−1</td><td>Yellow card (yes, every single one)</td></tr>
       <tr><td class="rp minus">−5</td><td>Red card</td></tr>
       <tr><td class="rp minus">−5</td><td>Missed penalty (in-game)</td></tr>
       <tr><td class="rp minus">−6</td><td>Own goal conceded</td></tr>
@@ -173,7 +173,7 @@ const MOCK_FIXTURES=[{"fixture":{"id":1001,"date":"2026-06-12T18:00:00+00:00","s
 // === SWEEPSTAKE SCORING ENGINE (shared by mock + live) ===
 const POINTS = { win:3, draw:1, cleanSheet:2, underdogWin:8, r32:5, qf:8, sf:12, champion:18,
   firstMinGoal:10, injuryTimeGoal:8, hatTrick:10, comeback:12, shootoutWin:6, fiveGoals:8,
-  yellow:-3, red:-5, penMiss:-5, ownGoal:-6 };
+  yellow:-1, red:-5, penMiss:-5, ownGoal:-6 };
 
 function norm(s){return (s||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z]/g,"");}
 

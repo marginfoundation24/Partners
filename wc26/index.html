@@ -112,6 +112,7 @@ footer{margin-top:34px;font-size:11px;color:#4d5f53;line-height:1.6}
   <nav>
     <button class="tab on" data-t="board">Leaderboard</button>
     <button class="tab" data-t="teams">Teams &amp; Draw</button>
+    <button class="tab" data-t="roster">Find Your Team</button>
     <button class="tab" data-t="matches">Matches</button>
     <button class="tab" data-t="rules">Rules</button>
   </nav>
@@ -121,6 +122,12 @@ footer{margin-top:34px;font-size:11px;color:#4d5f53;line-height:1.6}
   <section id="t-teams" hidden>
     <div class="note">12 teams · 65 players · every team drew <b>1 Tier 1 + 1 Tier 2 + 2 Tier 3</b> countries. ★ = bottom-12 underdog (+8 every win).</div>
     <div class="grid" id="teamsGrid"></div>
+  </section>
+  <section id="t-roster" hidden>
+    <div class="note">Type your name to find your team, teammates, and the four countries carrying your World Cup hopes.</div>
+    <input id="rosterSearch" type="search" placeholder="Search your name…" autocomplete="off"
+      style="width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--text);font:500 15px 'Inter';padding:11px 14px;margin-bottom:16px">
+    <div id="roster"></div>
   </section>
   <section id="t-matches" hidden><div id="matches"></div></section>
   <section id="t-rules" hidden>
@@ -421,19 +428,45 @@ function renderMatches(){
   el.innerHTML=html;
 }
 
+function renderRoster(filter){
+  const q=(filter||"").trim().toLowerCase();
+  const standings=teamTotals();
+  const posOf={}; standings.forEach((d,i)=>posOf[d.team.name]=i+1);
+  const ptsOf={}; standings.forEach(d=>ptsOf[d.team.name]=d.pts);
+  let people=[];
+  TEAMS.forEach(t=>t.members.forEach(m=>people.push({name:m,team:t})));
+  people.sort((a,b)=>a.name.localeCompare(b.name));
+  if(q) people=people.filter(p=>p.name.toLowerCase().includes(q));
+  const el=document.getElementById("roster");
+  if(!people.length){el.innerHTML='<div class="empty">No match — check the spelling, or blame the draw.</div>';return;}
+  el.innerHTML=people.map(p=>{
+    const t=p.team;
+    return `<div class="match" style="margin-bottom:8px">
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+        <b style="font-size:14px">${esc(p.name)}</b>
+        <span class="chip" style="color:var(--green);border-color:#1d5736">${esc(t.name)} · #${posOf[t.name]} · ${ptsOf[t.name]} pts</span>
+        <span style="font-size:15px">${t.countries.map(c=>CMAP[c].flag).join(" ")}</span>
+      </div>
+      <div class="mown" style="margin-top:5px">${t.countries.map(c=>esc(c)+(BOTTOM12.has(c)?" ★":"")).join(" · ")}</div>
+      <div class="mown" style="margin-top:3px">Teammates: ${t.members.filter(m=>m!==p.name).map(esc).join(", ")}</div>
+    </div>`;
+  }).join("");
+}
+
 function renderAll(){
   const pill=document.getElementById("modePill");
   if(!lastErr){ pill.className="pill "+(MODE==="mock"?"mock":"live"); }
   document.getElementById("modeTxt").textContent=MODE==="mock"?"Mock data":"Live";
   document.getElementById("modeBtn").textContent=MODE==="mock"?"Switch to live":"Switch to mock";
-  renderBoard(); renderTeams(); renderMatches();
+  renderBoard(); renderTeams(); renderMatches(); renderRoster(document.getElementById("rosterSearch").value);
 }
 
 document.querySelectorAll(".tab").forEach(t=>t.addEventListener("click",()=>{
   document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x===t));
-  ["board","teams","matches","rules"].forEach(id=>document.getElementById("t-"+id).hidden=("t-"+t.dataset.t)!=("t-"+id));
+  ["board","teams","roster","matches","rules"].forEach(id=>document.getElementById("t-"+id).hidden=("t-"+t.dataset.t)!=("t-"+id));
 }));
 document.getElementById("refreshBtn").addEventListener("click",refresh);
+document.getElementById("rosterSearch").addEventListener("input",e=>renderRoster(e.target.value));
 document.getElementById("modeBtn").addEventListener("click",()=>{
   MODE=MODE==="mock"?"live":"mock"; store.set("ss_mode",MODE);
   clearInterval(timer); if(MODE==="live") timer=setInterval(refresh,5*60*1000);

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="description" content="">
+<meta name="asset:slug" content="natacha-kenol-dossier">
+<meta name="asset:published" content="2026-06-23">
+<title>Natacha Kenol — Partner Dossier — Foundation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --gate-bg: #0f1318;
+    --gate-fg: #f5efe6;
+    --accent: #ff5b3a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    background: #faf7f2 !important; color: #0f1318 !important;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  /* Password gate */
+  .gate {
+    position: fixed; inset: 0;
+    background: var(--gate-bg); color: var(--gate-fg);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9999;
+  }
+  .gate.hidden { display: none; }
+  .gate-box {
+    max-width: 420px; padding: 56px 32px; text-align: center;
+  }
+  .gate-brand {
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    opacity: 0.7; margin-bottom: 28px; font-weight: 500;
+  }
+  .gate-h {
+    font-size: 28px; font-weight: 600; margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .gate-p {
+    font-size: 14px; opacity: 0.65; margin-bottom: 32px;
+  }
+  .gate-form {
+    display: flex; border: 1px solid var(--gate-fg);
+    background: transparent;
+  }
+  .gate-form input {
+    flex: 1; background: transparent; border: none; outline: none;
+    color: var(--gate-fg); padding: 14px 16px;
+    font: inherit; font-size: 15px;
+  }
+  .gate-form input::placeholder { color: rgba(245, 239, 230, 0.4); }
+  .gate-form button {
+    background: var(--accent); color: var(--gate-bg);
+    border: none; padding: 0 22px; cursor: pointer;
+    font: inherit; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    transition: opacity 0.12s;
+  }
+  .gate-form button:hover { opacity: 0.85; }
+  .gate-err {
+    color: var(--accent); font-size: 13px; margin-top: 14px;
+    display: none;
+  }
+  .gate-err.show { display: block; }
+
+  /* Page content */
+  .page { max-width: 760px; margin: 0 auto; padding: 56px 24px 96px; }
+  .header {
+    border-bottom: 1px solid rgba(15, 19, 24, 0.1);
+    padding-bottom: 24px; margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 16px;
+  }
+  h1 {
+    font-size: clamp(28px, 4vw, 40px); font-weight: 700;
+    line-height: 1.15; letter-spacing: -0.015em;
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    font-size: 17px; color: rgba(15, 19, 24, 0.65);
+    line-height: 1.4;
+  }
+  .meta {
+    font-size: 12px; color: rgba(15, 19, 24, 0.5);
+    margin-top: 18px; letter-spacing: 0.04em;
+  }
+
+  .content { font-size: 16px; line-height: 1.65; color: #0f1318 !important; }
+  .content h2 {
+    font-size: 22px; font-weight: 600; margin-top: 40px; margin-bottom: 14px;
+    letter-spacing: -0.01em; color: #0f1318 !important;
+  }
+  .content h3 {
+    font-size: 18px; font-weight: 600; margin-top: 28px; margin-bottom: 10px;
+    color: #ff5b3a !important;
+  }
+  .content p { margin-bottom: 14px; color: #0f1318 !important; }
+  .content ul, .content ol { padding-left: 24px; margin-bottom: 14px; }
+  .content li { margin-bottom: 6px; color: #0f1318 !important; }
+  .content strong { font-weight: 600; }
+  .content a {
+    color: #ff5b3a !important; text-decoration: underline;
+    text-decoration-thickness: 1px; text-underline-offset: 3px;
+  }
+  .content blockquote {
+    border-left: 2px solid var(--accent);
+    padding-left: 16px; margin: 18px 0;
+    color: rgba(15, 19, 24, 0.75); font-style: italic;
+  }
+  .content code {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    background: rgba(15, 19, 24, 0.06); padding: 2px 6px;
+    border-radius: 3px; font-size: 0.88em;
+  }
+  .content pre {
+    background: var(--gate-bg); color: var(--gate-fg);
+    padding: 16px; margin: 16px 0; overflow-x: auto;
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px;
+    line-height: 1.5;
+  }
+  .content pre code { background: none; padding: 0; color: inherit; }
+  .content table {
+    width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px;
+  }
+  .content th, .content td {
+    padding: 10px 12px; text-align: left;
+    border-bottom: 1px solid rgba(15, 19, 24, 0.1);
+    color: #0f1318 !important;
+  }
+  .content th { font-weight: 600; }
+  .content hr {
+    border: none; border-top: 1px solid rgba(15, 19, 24, 0.1);
+    margin: 32px 0;
+  }
+
+  .footer {
+    margin-top: 64px; padding-top: 24px;
+    border-top: 1px solid rgba(15, 19, 24, 0.1);
+    font-size: 12px; color: rgba(15, 19, 24, 0.5);
+    letter-spacing: 0.04em;
+  }
+  .footer a { color: inherit; }
+</style>
+</head>
+<body>
+
+<!-- password gate -->
+<div class="gate" id="gate">
+  <div class="gate-box">
+    <div class="gate-brand">Foundation × Partners</div>
+    <div class="gate-h">Private access</div>
+    <p class="gate-p">Enter password to view this asset.</p>
+    <form class="gate-form" onsubmit="checkPassword(event)">
+      <input type="password" id="pwInput" placeholder="password" autofocus autocomplete="off">
+      <button type="submit">Enter</button>
+    </form>
+    <div class="gate-err" id="gateErr">Wrong password.</div>
+  </div>
+</div>
+
+<div id="content" class="hidden" style="display: none;">
+
+<main class="page">
+
+  <header class="header">
+    <div class="eyebrow">Foundation × Partners</div>
+    <h1>Natacha Kenol — Partner Dossier</h1>
+    <p class="subtitle"></p>
+    <div class="meta">Published 2026-06-23 · prepared by Mozart for the Foundation team</div>
+  </header>
+
+  <article class="content">
+<h1>Natacha Kenol — Partner Scorecard</h1>
+<p><strong>Natacha Kenol, MBA</strong><br />
+Founder @ Kenol Marketing<br />
+<a href="https://www.linkedin.com/in/natacha-kenol/">LinkedIn</a> | <a href="https://kenolmarketing.com/links">Website</a></p>
+<hr />
+<p><strong>Total: 23 / 100</strong></p>
+<p><strong>Verdict:</strong> Weak fit / DQ. Pass.</p>
+<hr />
+<p><strong>Fit (title): 4 / 25</strong><br />
+Founder of a paid-ads agency (Facebook/Meta, Google Ads). Sells her own team's services directly — not a fractional CMO embed across multiple client companies. Per rubric, agency owner/operator maxes at Tier 3 regardless of title wording.</p>
+<p><strong>Portfolio (ICP alignment): 8 / 25</strong><br />
+Client roster includes Google Home, TSU S.H.A.P.E, Ruff Greens, Cuties &amp; Mighties, Founder Gym, etc. Some large brand names, but mix skews heavily DTC / consumer / nonprofit health. No visible $50M+ B2B SaaS, manufacturing, cybersecurity, or education concentration. Tier 3A at best.</p>
+<p><strong>Network: 3 / 15</strong><br />
+2nd-degree to David; 1 shared LinkedIn connection. Not a 1st-degree connection to Ross Simmonds or known Foundation mutual.</p>
+<p><strong>Audience + Reach: 8 / 20</strong><br />
+LinkedIn: 1,499 followers — weak signal. Posts video content consistently but engagement is low (reactions typically in single digits to low teens). "Digital Hustler" newsletter exists; subscriber count not visible, likely small given footprint. Weak single-channel presence.</p>
+<p><strong>Intent / Service Signal: 0 / 10</strong><br />
+Zero posts or content about Reddit, GEO, SEO, AI search visibility, content distribution, or LinkedIn organic growth. Entire public content library is Meta/Facebook Ads strategy and paid-social tips. No overlap with Foundation service areas.</p>
+<p><strong>Timing: 0 / 5</strong><br />
+No role change, fractional announcement, advisory board addition, or portfolio move in the last 90 days. Stable agency-founder position.</p>
+<hr />
+<p><strong>Suggested outreach angle:</strong> None — model and service areas don't map to Foundation's partner program.</p>
+  </article>
+
+  <footer class="footer">
+    Foundation Inc · partners.foundationinc.co · <a href="/">return to index</a>
+  </footer>
+
+</main>
+
+</div><!-- /#content -->
+
+<script>
+  (function () {
+    const PASSWORD_HASH = "06cb75f132725b4bb3365dbbe3bed8c53075c49f4fc4b63dc4b91acde5695d3d";
+    const STORAGE_KEY = "foundation_asset_natacha-kenol-dossier_unlocked";
+
+    async function sha256Hex(str) {
+      const enc = new TextEncoder().encode(str);
+      const hash = await crypto.subtle.digest("SHA-256", enc);
+      return Array.from(new Uint8Array(hash))
+        .map(function (b) { return b.toString(16).padStart(2, "0"); })
+        .join("");
+    }
+
+    function showContent() {
+      document.getElementById("gate").classList.add("hidden");
+      document.getElementById("content").style.display = "block";
+    }
+
+    window.checkPassword = async function (event) {
+      event.preventDefault();
+      const input = document.getElementById("pwInput");
+      const err = document.getElementById("gateErr");
+      const attempt = input.value;
+      const hash = await sha256Hex(attempt);
+      if (hash === PASSWORD_HASH) {
+        localStorage.setItem(STORAGE_KEY, "1");
+        showContent();
+      } else {
+        err.classList.add("show");
+        input.value = "";
+      }
+    };
+
+    window.addEventListener("DOMContentLoaded", function () {
+      if (localStorage.getItem(STORAGE_KEY) === "1") showContent();
+    });
+  })();
+</script>
+
+</body>
+</html>
